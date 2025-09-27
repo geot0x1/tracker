@@ -1,0 +1,98 @@
+# KiCad Project Files
+*.bak
+*.kicad_pcb-bak
+*.sch-bak
+*.pro-bak
+*.kicad_prl
+*.kicad_wks
+
+# Backup files from various editors
+*~
+*.swp
+*.swo
+*.sav
+
+# KiCad autosave files
+*.kicad_pcb.1
+*.sch.1
+
+# KiCad project settings (user-specific)
+*.kicad_prl
+*.kicad_pro.user
+*.kicad_pro.lru
+
+# KiCad cache and temporary files
+*.cache
+*.tmp
+*.temp
+
+# KiCad footprint library table (user-specific)
+fp-lib-table
+
+# KiCad symbol library table (user-specific)
+sym-lib-table
+
+# 3D model cache
+3d/
+
+# Gerber files (optional - include if you want to ignore generated manufacturing files)
+#*.gbr
+#*.gbl
+#*.gbo
+#*.gbp
+#*.gbs
+#*.gtl
+#*.gto
+#*.gtp
+#*.gts
+#*.gm1
+#*.gko
+#*.xln
+
+# Drill files (optional)
+#*.drl
+#*.nc
+#*.txt
+
+# Pick and place files (optional)
+#*.pos
+
+# BOM files (optional)
+#*.csv
+#*.xml
+#*.txt
+
+# PDF outputs (optional)
+#*.pdf
+
+# Simulation files
+*.sch-plot/
+
+# Netlist files (optional)
+#*.net
+
+# IPC-D-356 files (optional)
+#*.ipc
+
+# KiCad 5 and earlier backup files
+*-backup/
+*.000
+*.001
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.kicad_pro.workspace
+
+# Version control systems (other than git)
+.svn/
+CVS/

@@ -1,0 +1,991 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "4f1d18f5-7d2b-4d0b-8633-b1619d53124c")
+	(paper "A4")
+	(lib_symbols
+		(symbol "power:+5V"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+5V"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+5V\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+5V_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+5V_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(wire
+		(pts
+			(xy 156.21 83.82) (xy 171.45 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01900dfe-cf02-40af-9a61-c247f224c920")
+	)
+	(wire
+		(pts
+			(xy 156.21 96.52) (xy 171.45 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b4e517e-58eb-418c-a463-8f46b80fae80")
+	)
+	(wire
+		(pts
+			(xy 156.21 81.28) (xy 171.45 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a763dcc-00e9-468b-a358-71f3ef358307")
+	)
+	(wire
+		(pts
+			(xy 156.21 68.58) (xy 171.45 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a3c3109-ca21-4dcc-a79f-f5855aae881b")
+	)
+	(wire
+		(pts
+			(xy 156.21 71.12) (xy 171.45 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4bbeffb0-bf58-4433-b804-62770284debc")
+	)
+	(wire
+		(pts
+			(xy 156.21 73.66) (xy 171.45 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d30da3c-ab71-4b27-bb61-ffa99ce5c485")
+	)
+	(wire
+		(pts
+			(xy 78.74 105.41) (xy 73.66 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5493a6ef-86ef-46e8-8b4c-a10c394963ff")
+	)
+	(wire
+		(pts
+			(xy 104.14 78.74) (xy 133.35 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "594928f9-a802-42c2-b36e-9c39df63d35c")
+	)
+	(wire
+		(pts
+			(xy 156.21 66.04) (xy 171.45 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5dd80408-2685-4e27-99c8-10feaf36380e")
+	)
+	(wire
+		(pts
+			(xy 109.22 73.66) (xy 104.14 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ffd4d72-19f4-4120-bb53-fc135a09d7b7")
+	)
+	(wire
+		(pts
+			(xy 156.21 86.36) (xy 171.45 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2898ac7-3273-4026-8f32-560bb1652b2e")
+	)
+	(wire
+		(pts
+			(xy 73.66 105.41) (xy 73.66 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9851990-e1f7-46b2-8153-301020b3355f")
+	)
+	(wire
+		(pts
+			(xy 156.21 88.9) (xy 171.45 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d15cf214-67f2-4d8a-8df6-1d981548b8ad")
+	)
+	(wire
+		(pts
+			(xy 109.22 71.12) (xy 109.22 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5bf44aa-c2a3-411b-9fac-49d27370abc0")
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 109.22 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1acf4915-aeed-4b15-8726-39148e24e29d")
+		(property "Reference" "#PWR01"
+			(at 109.22 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 109.22 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 109.22 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 109.22 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 109.22 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8936cbba-5f53-48e2-8c9d-7802770c47e9")
+		)
+		(instances
+			(project ""
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c"
+					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 73.66 102.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c411aecc-c57f-4b4b-b58f-622f6c95457d")
+		(property "Reference" "#PWR067"
+			(at 73.66 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 73.66 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 73.66 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 73.66 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 73.66 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7e277638-8719-481d-b361-07f65b717b12")
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c"
+					(reference "#PWR067")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet
+		(at 171.45 62.23)
+		(size 20.32 36.83)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 255 255 194 1.0000)
+		)
+		(uuid "0c625b57-2ba8-40e9-b547-0ed0363dd1ec")
+		(property "Sheetname" "gsm"
+			(at 171.196 61.214 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "gsm.kicad_sch"
+			(at 171.45 99.6954 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "GPS_RX" input
+			(at 171.45 68.58 180)
+			(uuid "d4a32324-5f9f-4d95-8486-f483b19e8f65")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GSM_DTR" input
+			(at 171.45 96.52 180)
+			(uuid "36bf695d-dfd7-4540-8204-a5f8b5f56400")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GSM_RI" input
+			(at 171.45 81.28 180)
+			(uuid "096483b3-70be-4804-a2d3-a8207109519f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GSM_RESET" input
+			(at 171.45 76.2 180)
+			(uuid "f3997090-e273-479e-9a24-267ca19beed2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GSM_EN" input
+			(at 171.45 78.74 180)
+			(uuid "6228933e-dc56-4f45-adac-cf570360368a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GSM_TX" input
+			(at 171.45 71.12 180)
+			(uuid "b6e89418-4c7e-4fe6-a42d-65d900f09f47")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GSM_AP_READY" input
+			(at 171.45 83.82 180)
+			(uuid "6001281f-6dfb-4094-9540-822c29affa31")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GSM_PWRKEY" input
+			(at 171.45 86.36 180)
+			(uuid "76593774-c472-40b8-9422-56cfa451e83f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GSM_STATUS" input
+			(at 171.45 88.9 180)
+			(uuid "04ecc010-1229-46e3-adc6-4baf083e3de9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GSM_RX" input
+			(at 171.45 73.66 180)
+			(uuid "ddb088c5-6f3b-4ab4-8c47-07e4e2db7ae0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GPS_TX" input
+			(at 171.45 66.04 180)
+			(uuid "7164580c-3983-4da7-a0fa-8e6a2fa3e24d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GSM_LINE_BUF_EN" input
+			(at 171.45 93.98 180)
+			(uuid "81b9b01e-74f9-4f60-a573-660c39beaf25")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 78.74 68.58)
+		(size 25.4 15.24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 255 255 194 1.0000)
+		)
+		(uuid "0e6bc46e-b05d-4d53-a1b9-fade2e6c2182")
+		(property "Sheetname" "psu"
+			(at 78.74 67.8176 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "psu.kicad_sch"
+			(at 78.74 84.4554 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "+VIN" input
+			(at 78.74 73.66 180)
+			(uuid "1d6fc851-763f-4d55-916e-bff9929277ac")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "PSU_CTRL" input
+			(at 104.14 78.74 0)
+			(uuid "6721ca7c-50b4-439b-af8e-e851a8782839")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "+5V" input
+			(at 104.14 73.66 0)
+			(uuid "025eb536-5747-45e2-8ad9-64b74f383e6c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 203.2 93.98)
+		(size 30.48 22.86)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 255 255 194 1.0000)
+		)
+		(uuid "1b416177-91af-4d12-8e72-813a2e7f8715")
+		(property "Sheetname" "low_voltage_psu"
+			(at 203.2 93.2176 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "low_voltage_psu.kicad_sch"
+			(at 203.2 117.4754 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "+VSYS" input
+			(at 203.2 100.33 180)
+			(uuid "01d773de-e649-430d-82d3-35ef62744c17")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "+3V3" input
+			(at 233.68 100.33 0)
+			(uuid "e00b3d5c-edd5-4080-b607-4157a62385ef")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 133.35 62.23)
+		(size 22.86 36.83)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 255 255 194 1.0000)
+		)
+		(uuid "5edf3f23-50ab-4fd8-9879-f628dc9bcaf7")
+		(property "Sheetname" "mcu"
+			(at 133.35 61.4676 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu.kicad_sch"
+			(at 133.35 99.6954 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "GSM_TX" input
+			(at 156.21 71.12 0)
+			(uuid "a9b57782-74dd-4099-b30e-d7b049a378e6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GSM_RX" input
+			(at 156.21 73.66 0)
+			(uuid "9d8b565c-2719-4501-9268-e281fb1f3395")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GSM_PWRKEY" input
+			(at 156.21 86.36 0)
+			(uuid "e305b44b-9fd3-49f7-93b6-f79a1bce7983")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPS_TX" input
+			(at 156.21 66.04 0)
+			(uuid "caa476c1-9a33-4718-bee8-365e6010755e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPS_RX" input
+			(at 156.21 68.58 0)
+			(uuid "a97416ef-2ec5-4d89-a387-04301a0941d8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GSM_DTR" input
+			(at 156.21 96.52 0)
+			(uuid "83f93c2d-b1a1-4d3a-8438-2950dae1f167")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GSM_RI" input
+			(at 156.21 81.28 0)
+			(uuid "eb61fc03-51e5-461c-8b3b-6780b05b6d6c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GSM_AP_READY" input
+			(at 156.21 83.82 0)
+			(uuid "bb51525a-cf81-4e38-af87-cf9d6a2d4f3e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GSM_STATUS" input
+			(at 156.21 88.9 0)
+			(uuid "20de4335-9416-4d72-8c5a-5894d05d1708")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PSU_CTRL" input
+			(at 133.35 78.74 180)
+			(uuid "69edd8b1-6be9-446d-8caf-bf5aa0a068c6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 78.74 100.33)
+		(size 25.4 39.37)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(color 255 255 194 1.0000)
+		)
+		(uuid "f6a238ba-2427-4db5-a4e9-0e2d7bd0deba")
+		(property "Sheetname" "battery charger"
+			(at 78.74 99.5676 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "battery_charger.kicad_sch"
+			(at 78.74 140.3354 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "CHARGER_PG" input
+			(at 104.14 125.73 0)
+			(uuid "1c303cc8-6cd6-41c2-89fd-b8a86a78d496")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "BAT_LEVEL" input
+			(at 104.14 123.19 0)
+			(uuid "20912c41-b26a-40c6-938c-2277a16975f5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CHARGER_SCL" input
+			(at 104.14 120.65 0)
+			(uuid "6e40d75b-9cca-40c4-9466-b7c1f807e205")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CHARGE_ENABLE" input
+			(at 104.14 128.27 0)
+			(uuid "e2b4a989-73be-4ec6-8848-b39726c0761b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CHARGER_INT" input
+			(at 104.14 118.11 0)
+			(uuid "9230ab97-f7fb-495f-a9bf-6bc1eeb9de1f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CHARGER_SDA" input
+			(at 104.14 115.57 0)
+			(uuid "c756cee1-29c8-477d-8436-fc945769e51e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "+5V" input
+			(at 78.74 105.41 180)
+			(uuid "b2b6a2a1-38ec-42e2-8bbb-20eb4a1cec3a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "POWER_CYCLE" input
+			(at 104.14 130.81 0)
+			(uuid "cd81d346-613c-4134-885a-2184f29f9b8c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CHARGER_STAT" input
+			(at 104.14 113.03 0)
+			(uuid "61b15ba0-2737-4adb-895b-da6943b1ba62")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "+VSYS" input
+			(at 104.14 105.41 0)
+			(uuid "e0687e87-db3a-4971-b121-02d995d7ba6e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
