@@ -5,6 +5,176 @@
 	(uuid "a3d3e021-330a-4651-8d9f-cff0d8026d23")
 	(paper "A3")
 	(lib_symbols
+		(symbol "Connector:Conn_Coaxial"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0.254 3.048 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_Coaxial"
+				(at 2.921 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "BNC SMA SMB SMC LEMO coaxial connector CINCH RCA MCX MMCX U.FL UMRF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*BNC* *SMA* *SMB* *SMC* *Cinch* *LEMO* *UMRF* *MCX* *U.FL*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_Coaxial_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy -0.508 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.778 0)
+					(mid 0.222 -1.8079)
+					(end -1.778 -0.508)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -1.778 0.508)
+					(mid 0.2221 1.8084)
+					(end 1.778 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 0.508)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Conn_Coaxial_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "In"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "Ext"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Connector:SIM_Card"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1834,7 +2004,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6322,6 +6492,16 @@
 		)
 		(uuid "253d8636-db28-4e66-85e8-dfe98dadca0b")
 	)
+	(label "ANT_MAIN"
+		(at 290.83 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "275cb162-c9ba-4dad-b5b6-906419943146")
+	)
 	(label "SIM_VCC"
 		(at 284.48 137.16 180)
 		(effects
@@ -6431,6 +6611,16 @@
 			(justify right bottom)
 		)
 		(uuid "80cf1798-e2a5-44ce-99ea-57c11e69a385")
+	)
+	(label "ANT_GNSS"
+		(at 292.1 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8376f23b-8cba-420f-8ebc-e015d6a8c673")
 	)
 	(label "+VBAT_GSM"
 		(at 248.92 50.8 180)
@@ -7948,7 +8138,7 @@
 				(hide yes)
 			)
 		)
-		(pin ""
+		(pin "1"
 			(uuid "ce5ce1e5-7724-49da-a270-6882cf40dc70")
 		)
 		(pin "10"
@@ -9022,7 +9212,7 @@
 		(dnp no)
 		(uuid "bbdb1adc-6c22-47be-bb37-f0c56fa6a740")
 		(property "Reference" "M1"
-			(at 264.16 97.79 0)
+			(at 263.144 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9482,7 +9672,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Pack04_Split")
-		(at 303.53 142.24 270)
+		(at 303.53 139.7 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9490,7 +9680,7 @@
 		(dnp no)
 		(uuid "c356a357-9559-4bee-870d-43b243209952")
 		(property "Reference" "RN1"
-			(at 302.26 134.62 90)
+			(at 302.26 132.08 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9499,7 +9689,7 @@
 			)
 		)
 		(property "Value" "22R"
-			(at 303.53 139.7 90)
+			(at 303.53 137.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9508,7 +9698,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_Array_Concave_4x0603"
-			(at 303.53 140.208 90)
+			(at 303.53 137.668 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9517,7 +9707,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 303.53 142.24 0)
+			(at 303.53 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9526,7 +9716,7 @@
 			)
 		)
 		(property "Description" "4 resistor network, parallel topology, split"
-			(at 303.53 142.24 0)
+			(at 303.53 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9792,8 +9982,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 312.42 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cfc4fc78-876e-40db-94af-9e824b8ccf0d")
+		(property "Reference" "#PWR073"
+			(at 312.42 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 312.42 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 312.42 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 312.42 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 312.42 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c4a30f25-6895-4578-af75-fea8efc5ea53")
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/0c625b57-2ba8-40e9-b547-0ed0363dd1ec"
+					(reference "#PWR073")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_Pack04_Split")
-		(at 303.53 139.7 270)
+		(at 303.53 142.24 270)
 		(unit 3)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9802,15 +10057,6 @@
 		(fields_autoplaced yes)
 		(uuid "d1359482-0194-48b7-a7ba-750828ce0e79")
 		(property "Reference" "RN1"
-			(at 303.53 134.62 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "22R"
 			(at 303.53 137.16 90)
 			(effects
 				(font
@@ -9819,8 +10065,17 @@
 				(hide yes)
 			)
 		)
+		(property "Value" "22R"
+			(at 303.53 139.7 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Footprint" "Resistor_SMD:R_Array_Concave_4x0603"
-			(at 303.53 137.668 90)
+			(at 303.53 140.208 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9829,7 +10084,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 303.53 139.7 0)
+			(at 303.53 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9838,7 +10093,7 @@
 			)
 		)
 		(property "Description" "4 resistor network, parallel topology, split"
-			(at 303.53 139.7 0)
+			(at 303.53 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10748,6 +11003,76 @@
 			(project "BK4000TG_V3"
 				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/0c625b57-2ba8-40e9-b547-0ed0363dd1ec"
 					(reference "C18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_Coaxial")
+		(at 312.42 91.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fe3ae77f-75ff-4824-891f-4b115905e902")
+		(property "Reference" "J5"
+			(at 316.23 90.4631 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Conn_Coaxial"
+			(at 316.23 93.0031 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_Coaxial:U.FL_Molex_MCRF_73412-0110_Vertical"
+			(at 312.42 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 312.42 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+			(at 312.42 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "d57d1060-bab5-489e-b45f-fdf1a3e8033d")
+		)
+		(pin "1"
+			(uuid "104f4df7-f04f-40ef-a3df-328d65834446")
+		)
+		(instances
+			(project ""
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/0c625b57-2ba8-40e9-b547-0ed0363dd1ec"
+					(reference "J5")
 					(unit 1)
 				)
 			)

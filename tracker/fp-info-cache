@@ -1,4 +1,4 @@
-26167763651900327
+26173166931361100
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -71708,6 +71708,13 @@ My Footprints
 2
 2
 My Footprints
+ABI-033-RC
+
+
+0
+2
+2
+My Footprints
 APAE1575R1820ABDC1
 GPS Antenna APAE1575R1820ABDC1 18x18x2
 gps antenna 
@@ -71750,6 +71757,13 @@ MS88SF2 Module
 28
 28
 My Footprints
+BQ25622E
+
+
+0
+22
+18
+My Footprints
 BZX84C10
 
 
@@ -71770,6 +71784,13 @@ Battery Holder Keystone CR2477 24.5x7.7
 0
 3
 2
+My Footprints
+CLX6F-FKC-CKNNQDGBB7A363
+RGB LED 624 nm, 540 nm, 480 nm 130 mW, 119 mW, 133 mW 750 mcd, 1350 mcd, 240 mcd
+RGB LED 624 nm, 540 nm, 480 nm 130 mW, 119 mW, 133 mW 750 mcd, 1350 mcd, 240 mcd
+0
+6
+6
 My Footprints
 Conn_CUI_TB001-500-04BE
 CUI Devices Fixed Terminal Blocks 2 24 Poles, Screw Type, Horizontal, 5.0 Pitch, 22 12 (AWG), Terminal Block Connector
@@ -72030,7 +72051,7 @@ Sensirion_Filter_Cap_SF2
 0
 0
 My Footprints
-Simple_hole_pad
+Simple_hole_pad_3x1.5
 
 
 0
