@@ -3637,6 +3637,16 @@
 	)
 	(wire
 		(pts
+			(xy 152.4 146.05) (xy 165.1 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9b934bc-157c-43c5-a8a8-cb3c608c1870")
+	)
+	(wire
+		(pts
 			(xy 195.58 125.73) (xy 210.82 125.73)
 		)
 		(stroke
@@ -4299,7 +4309,7 @@
 	)
 	(hierarchical_label "CHARGER_STAT"
 		(shape input)
-		(at 370.84 115.57 180)
+		(at 152.4 146.05 180)
 		(effects
 			(font
 				(size 1.27 1.27)
