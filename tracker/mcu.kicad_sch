@@ -2907,6 +2907,16 @@
 	)
 	(wire
 		(pts
+			(xy 132.08 143.51) (xy 165.1 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "298de287-8779-4c40-bb24-444cd5c561c1")
+	)
+	(wire
+		(pts
 			(xy 69.85 154.94) (xy 74.93 154.94)
 		)
 		(stroke
@@ -3564,6 +3574,16 @@
 			(type solid)
 		)
 		(uuid "d3443607-02fb-4d18-9eb4-eddddf12f0c8")
+	)
+	(wire
+		(pts
+			(xy 132.08 140.97) (xy 165.1 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d39e7728-1e09-443a-b9c9-4bacb22b265f")
 	)
 	(wire
 		(pts
@@ -4244,17 +4264,6 @@
 		)
 		(uuid "3ce6c58a-856d-43b3-870c-959f0f1b8674")
 	)
-	(hierarchical_label "PA6{slash}ADC_IN6"
-		(shape input)
-		(at 285.75 172.72 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "40cb5aa0-5891-4af3-a5c0-1fe7114f15db")
-	)
 	(hierarchical_label "4_20_RES_EN"
 		(shape input)
 		(at 252.73 182.88 0)
@@ -4301,12 +4310,12 @@
 	)
 	(hierarchical_label "CHARGER_INT"
 		(shape input)
-		(at 210.82 146.05 0)
+		(at 132.08 143.51 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "66f86ba4-9f6e-41f6-9815-2d1a1088fd72")
 	)
@@ -4323,12 +4332,12 @@
 	)
 	(hierarchical_label "POWER_CYCLE"
 		(shape input)
-		(at 330.2 179.07 180)
+		(at 210.82 146.05 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "6bfdd371-cb0b-4782-9f9e-049893d0c4e6")
 	)
@@ -4389,7 +4398,7 @@
 	)
 	(hierarchical_label "CHARGE_ENABLE"
 		(shape input)
-		(at 331.47 148.59 180)
+		(at 132.08 140.97 180)
 		(effects
 			(font
 				(size 1.27 1.27)

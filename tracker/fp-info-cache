@@ -1,4 +1,4 @@
-26173166931361100
+26189039489414406
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -75244,7 +75244,7 @@ CSP 80 0.4 80-ball WLCSP
 80
 Package_CSP
 LFCSP-6-1EP_2x2mm_P0.65mm_EP1x1.6mm
-LFCSP, 6 Pin (https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/lfcspcp/cp_6_3.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+LFCSP, 6 Pin (https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/lfcspcp/cp-6/cp_6_3.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
 LFCSP NoLead
 0
 11
@@ -76482,6 +76482,27 @@ ArtInChip QFN NoLead
 127
 101
 Package_DFN_QFN
+CDFN-4_2.5x3.2mm_P2.1mm
+CDFN, 4 Pin (https://ww1.microchip.com/downloads/aemDocuments/documents/TCG/ProductDocuments/DataSheets/DSC1001-3-4-1.8V-3.3V-Low-Power-Precision-CMOS-Oscillators-DS20005529.pdf#page=16), generated with kicad-footprint-generator ipc_noLead_generator.py
+CDFN NoLead Microchip-DFN3225-4LD-PL-1
+0
+4
+4
+Package_DFN_QFN
+CDFN-4_2x2.5mm_P1.65mm
+CDFN, 4 Pin (https://ww1.microchip.com/downloads/aemDocuments/documents/TCG/ProductDocuments/DataSheets/DSC1001-3-4-1.8V-3.3V-Low-Power-Precision-CMOS-Oscillators-DS20005529.pdf#page=17), generated with kicad-footprint-generator ipc_noLead_generator.py
+CDFN NoLead Microchip-DFN2520-4LD-PL-1
+0
+4
+4
+Package_DFN_QFN
+CDFN-4_3.2x5mm_P2.54mm
+CDFN, 4 Pin (https://ww1.microchip.com/downloads/aemDocuments/documents/TCG/ProductDocuments/DataSheets/DSC1001-3-4-1.8V-3.3V-Low-Power-Precision-CMOS-Oscillators-DS20005529.pdf#page=15), generated with kicad-footprint-generator ipc_noLead_generator.py
+CDFN NoLead Microchip-DFN5032-4LD-PL-1
+0
+4
+4
+Package_DFN_QFN
 Cypress_QFN-56-1EP_8x8mm_P0.5mm_EP6.22x6.22mm_ThermalVias
 56-Lead Plastic Quad Flat, No Lead Package (ML) - 8x8x0.9 mm Body [QFN] (see datasheet at http://www.cypress.com/file/138911/download and app note at http://www.cypress.com/file/140006/download)
 QFN 0.5
@@ -77377,6 +77398,13 @@ Maxim TDFN NoLead
 0
 11
 7
+Package_DFN_QFN
+Maxim_TDFN-10-1EP_3x3mm_P0.5mm_EP1.58x2.35mm
+Maxim  TDFN, 10 Pin (https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/tqfn/21-0137.pdf and https://www.analog.com/media/en/package-pcb-resources/land-pattern/tdfn-ep/90-0003.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+Maxim TDFN NoLead T1033-2 MO229/WEED-3
+0
+15
+11
 Package_DFN_QFN
 Maxim_TDFN-12-1EP_3x3mm_P0.5mm_EP1.7x2.5mm
 Maxim TDFN, 12 Pin (https://www.analog.com/media/en/package-pcb-resources/land-pattern/tdfn/90-0397.pdf)
@@ -79408,6 +79436,13 @@ QFN 0.5
 31
 21
 Package_DFN_QFN
+TDFN-6-1EP_1.2x1.2mm_P0.4mm_EP0.3x0.94mm
+TDFN, 6 Pin (http://ww1.microchip.com/downloads/en/DeviceDoc/MIC5528.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+TDFN NoLead
+0
+8
+7
+Package_DFN_QFN
 TDFN-6-1EP_2.5x2.5mm_P0.65mm_EP1.3x2mm
 TDFN, 6 Pin (http://www.nve.com/Downloads/ab3.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
 TDFN NoLead
@@ -80374,6 +80409,20 @@ Texas WQFN NoLead
 31
 17
 Package_DFN_QFN
+Texas_RUM0016E_WQFN-16-1EP_4x4mm_P0.65mm_EP2.5x2.5mm
+Texas RUM0016E WQFN, 16 Pin (https://www.ti.com/lit/ml/qfnd679/qfnd679.pdf?ts=1756465079919), generated with kicad-footprint-generator ipc_noLead_generator.py
+Texas WQFN NoLead
+0
+21
+17
+Package_DFN_QFN
+Texas_RUM0016E_WQFN-16-1EP_4x4mm_P0.65mm_EP2.5x2.5mm_ThermalVias
+Texas RUM0016E WQFN, 16 Pin (https://www.ti.com/lit/ml/qfnd679/qfnd679.pdf?ts=1756465079919), generated with kicad-footprint-generator ipc_noLead_generator.py
+Texas WQFN NoLead
+0
+31
+17
+Package_DFN_QFN
 Texas_RUN0010A_WQFN-10_2x2mm_P0.5mm
 Texas RUN0010A WQFN, 10 Pin (https://www.ti.com/lit/ds/symlink/tmp461.pdf#page=35), generated with kicad-footprint-generator ipc_noLead_generator.py
 Texas WQFN NoLead
@@ -81156,6 +81205,20 @@ VQFN, 48 Pin (http://www.ti.com/lit/ds/symlink/cc430f5137.pdf#page=128), generat
 VQFN NoLead
 0
 75
+49
+Package_DFN_QFN
+VQFN-48-1EP_7x7mm_P0.5mm_EP4.2x4.2mm
+VQFN, 48 Pin (Based on JEDEC MO-220 variation VKKD-2 (using Figure 1), custom Exposed Pad from NXP, https://www.jedec.org/document_search?search_api_views_fulltext=MO-220, https://www.nxp.com/docs/en/package-information/SOT619-28.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+VQFN NoLead NXP_SOT619-28
+0
+53
+49
+Package_DFN_QFN
+VQFN-48-1EP_7x7mm_P0.5mm_EP4.2x4.2mm_ThermalVias
+VQFN, 48 Pin (Based on JEDEC MO-220 variation VKKD-2 (using Figure 1), custom Exposed Pad from NXP, https://www.jedec.org/document_search?search_api_views_fulltext=MO-220, https://www.nxp.com/docs/en/package-information/SOT619-28.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+VQFN NoLead NXP_SOT619-28
+0
+70
 49
 Package_DFN_QFN
 VQFN-48-1EP_7x7mm_P0.5mm_EP5.15x5.15mm
