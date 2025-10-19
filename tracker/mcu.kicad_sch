@@ -2794,6 +2794,12 @@
 		(uuid "b91412f8-2a0c-42db-b394-b64d05ee5db0")
 	)
 	(junction
+		(at 157.48 90.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cb94311a-15d6-4f67-9fba-cf2408ed76d2")
+	)
+	(junction
 		(at 162.56 74.93)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4199,7 +4205,7 @@
 	)
 	(hierarchical_label "GSM_STATUS"
 		(shape input)
-		(at 144.78 156.21 180)
+		(at 149.86 118.11 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4221,7 +4227,7 @@
 	)
 	(hierarchical_label "GSM_LINE_BUF_EN"
 		(shape input)
-		(at 149.86 118.11 180)
+		(at 144.78 156.21 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4981,6 +4987,72 @@
 			(project "tracker"
 				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/5edf3f23-50ab-4fd8-9879-f628dc9bcaf7"
 					(reference "#PWR033")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 157.48 90.17 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3584d2b9-7219-4c23-a74d-f9613d554abe")
+		(property "Reference" "#PWR080"
+			(at 157.48 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 157.48 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 157.48 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 157.48 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 157.48 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "32a0f472-40a9-4448-8384-cf52aff0daaa")
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/5edf3f23-50ab-4fd8-9879-f628dc9bcaf7"
+					(reference "#PWR080")
 					(unit 1)
 				)
 			)
