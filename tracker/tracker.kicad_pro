@@ -780,6 +780,10 @@
     [
       "f6a238ba-2427-4db5-a4e9-0e2d7bd0deba",
       "battery charger"
+    ],
+    [
+      "68d45962-0216-4a92-bb54-eaef1d80ce8b",
+      "accelerometer"
     ]
   ],
   "text_variables": {}
