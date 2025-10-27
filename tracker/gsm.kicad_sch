@@ -7834,7 +7834,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 332.74 132.08 0)
 			(effects
 				(font
@@ -7910,7 +7910,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 157.48 58.42 0)
 			(effects
 				(font
@@ -8221,19 +8221,19 @@
 			)
 		)
 		(pin "3"
-			(uuid "5666a0e1-81f9-44bd-9767-8aedaf21ab05")
+			(uuid "5666a0e1-81f9-44bd-9767-8aedaf21ab06")
 		)
 		(pin "1"
 			(uuid "a18b23a1-aad3-4b70-86f4-6d9d752eb7b3")
 		)
 		(pin "5"
-			(uuid "8060007e-4b2e-4e03-b0a4-915ef3af037f")
+			(uuid "8060007e-4b2e-4e03-b0a4-915ef3af0380")
 		)
 		(pin "2"
 			(uuid "84e4c252-f3c0-4165-a114-cb2abba6c603")
 		)
 		(pin "4"
-			(uuid "bf11de2b-dd65-425d-bd37-b591432fce9f")
+			(uuid "bf11de2b-dd65-425d-bd37-b591432fcea0")
 		)
 		(pin "6"
 			(uuid "93d58817-09f2-4cad-acae-dc8889f85906")
@@ -8493,7 +8493,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 116.84 66.04 0)
 			(effects
 				(font
@@ -8799,7 +8799,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 109.22 53.34 0)
 			(effects
 				(font
