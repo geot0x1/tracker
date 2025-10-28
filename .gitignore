@@ -1,98 +1,52 @@
-# KiCad Project Files
+# KiCad backup and autosave
 *.bak
-*.kicad_pcb-bak
-*.sch-bak
-*.pro-bak
 *.kicad_prl
-*.kicad_wks
-
-# Backup files from various editors
-*~
-*.swp
-*.swo
-*.sav
-
-# KiCad autosave files
-*.kicad_pcb.1
-*.sch.1
-
-# KiCad project settings (user-specific)
-*.kicad_prl
-*.kicad_pro.user
-*.kicad_pro.lru
-
-# KiCad cache and temporary files
-*.cache
 *.tmp
-*.temp
+*~
+_freerouting.log
 
-# KiCad footprint library table (user-specific)
-fp-lib-table
+# Schematic and PCB backup files
+*.sch-bak
+*.kicad_sch-bak
+*.kicad_pcb-bak
 
-# KiCad symbol library table (user-specific)
-sym-lib-table
+# Cache and intermediate files
+*-cache.lib
+*-rescue.lib
+*.net
+*.xml
 
-# 3D model cache
-3d/
+# Export files
+*.gbr
+*.drl
+*.pos
+*.rpt
+*.bom
+*.csv
 
-# Gerber files (optional - include if you want to ignore generated manufacturing files)
-#*.gbr
-#*.gbl
-#*.gbo
-#*.gbp
-#*.gbs
-#*.gtl
-#*.gto
-#*.gtp
-#*.gts
-#*.gm1
-#*.gko
-#*.xln
+# User-specific settings
+*.kicad_sch-bak
+*.kicad_pcb-bak
+*.kicad_prl
+fp-info-cache
+sym-lib-table-bak
+fp-lib-table-bak
 
-# Drill files (optional)
-#*.drl
-#*.nc
-#*.txt
+# Autosave
+*.autosave
 
-# Pick and place files (optional)
-#*.pos
+# Simulation
+*.raw
+*.log
+*.cir
+*.out
 
-# BOM files (optional)
-#*.csv
-#*.xml
-#*.txt
+# 3D model build artifacts
+*.wrl
+*.step
+*.stp
 
-# PDF outputs (optional)
-#*.pdf
-
-# Simulation files
-*.sch-plot/
-
-# Netlist files (optional)
-#*.net
-
-# IPC-D-356 files (optional)
-#*.ipc
-
-# KiCad 5 and earlier backup files
-*-backup/
-*.000
-*.001
-
-# OS generated files
+# OS / Editor cruft
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
-
-# IDE/Editor files
-.vscode/
-.idea/
-*.kicad_pro.workspace
-
-# Version control systems (other than git)
-.svn/
-CVS/
+*-backups/
