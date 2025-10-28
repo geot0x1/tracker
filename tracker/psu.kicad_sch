@@ -1297,7 +1297,7 @@
 	)
 	(text "Freq: 500KHz"
 		(exclude_from_sim no)
-		(at 139.192 118.872 0)
+		(at 129.794 69.596 0)
 		(effects
 			(font
 				(size 1.27 1.27)
