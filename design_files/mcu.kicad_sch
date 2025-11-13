@@ -2907,6 +2907,12 @@
 		(uuid "dfcad6a2-0d00-465d-be3c-aec4c5a45a6b")
 	)
 	(junction
+		(at 107.95 85.09)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e2aa67a9-e0e3-4042-985d-a12bc0f3797f")
+	)
+	(junction
 		(at 134.62 39.37)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3374,6 +3380,16 @@
 	)
 	(wire
 		(pts
+			(xy 107.95 81.28) (xy 107.95 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83734c33-a519-40c9-b97d-2e897b378b5b")
+	)
+	(wire
+		(pts
 			(xy 167.64 102.87) (xy 205.74 102.87)
 		)
 		(stroke
@@ -3604,6 +3620,16 @@
 	)
 	(wire
 		(pts
+			(xy 107.95 74.93) (xy 107.95 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1f25f8f-ae1f-4275-8396-01d0ff37a08e")
+	)
+	(wire
+		(pts
 			(xy 48.26 152.4) (xy 48.26 154.94)
 		)
 		(stroke
@@ -3684,7 +3710,7 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 85.09) (xy 137.16 85.09)
+			(xy 102.87 85.09) (xy 107.95 85.09)
 		)
 		(stroke
 			(width 0)
@@ -3871,6 +3897,16 @@
 			(type solid)
 		)
 		(uuid "e6782647-1dff-4871-b32b-01ff663008e8")
+	)
+	(wire
+		(pts
+			(xy 107.95 85.09) (xy 137.16 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9802bb0-081f-4c05-8654-43911b5c0674")
 	)
 	(wire
 		(pts
@@ -6753,6 +6789,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_Small")
+		(at 107.95 78.74 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "af5ad20d-fc43-4496-8cbc-8054f186666e")
+		(property "Reference" "R20"
+			(at 102.616 79.756 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10K"
+			(at 102.362 77.724 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 107.95 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 107.95 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 107.95 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "79ee83ae-fb31-4ee1-9b46-a492ebd9d9c2")
+		)
+		(pin "2"
+			(uuid "f8367f4b-b954-45df-895f-b30fc7ac7a97")
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/5edf3f23-50ab-4fd8-9879-f628dc9bcaf7"
+					(reference "R20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3.3V")
 		(at 252.73 21.59 0)
 		(mirror y)
@@ -7395,6 +7501,72 @@
 			(project "BK4000TG_V3"
 				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/5edf3f23-50ab-4fd8-9879-f628dc9bcaf7"
 					(reference "#PWR013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 107.95 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f02773b8-3b90-4097-9fe8-a1320c65809c")
+		(property "Reference" "#PWR043"
+			(at 107.95 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 107.95 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 107.95 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 107.95 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 107.95 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e491b4d6-5a0b-435a-8e8a-e62fea12bd16")
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/5edf3f23-50ab-4fd8-9879-f628dc9bcaf7"
+					(reference "#PWR043")
 					(unit 1)
 				)
 			)
