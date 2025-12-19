@@ -9,3 +9,5 @@ Battery connector pins is wrong.
 Crystal has wrong footprint.  
 
 Memory footprint is wrong, too big for the part.  
+
+RX and TX lines on GSM connection are swapped.
