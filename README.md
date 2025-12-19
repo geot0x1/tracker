@@ -10,4 +10,6 @@ Crystal has wrong footprint.
 
 Memory footprint is wrong, too big for the part.  
 
-RX and TX lines on GSM connection are swapped.
+RX and TX lines on GSM connection are swapped.  
+
+Change the programming port to 1.5mm pitch.  
