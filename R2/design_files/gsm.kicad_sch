@@ -5358,6 +5358,12 @@
 		(uuid "9d29d03c-427b-4b84-bf4f-2d6f7ba5364a")
 	)
 	(junction
+		(at 68.58 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9f2eb68e-037e-462a-ae4a-d991a852d1d2")
+	)
+	(junction
 		(at 158.75 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5537,7 +5543,7 @@
 	)
 	(wire
 		(pts
-			(xy 106.68 48.26) (xy 106.68 50.8)
+			(xy 68.58 49.53) (xy 68.58 50.8)
 		)
 		(stroke
 			(width 0)
@@ -6207,7 +6213,7 @@
 	)
 	(wire
 		(pts
-			(xy 106.68 50.8) (xy 109.22 50.8)
+			(xy 68.58 50.8) (xy 109.22 50.8)
 		)
 		(stroke
 			(width 0)
@@ -10303,6 +10309,71 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 68.58 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c801c90a-cc3b-442f-a15f-06cae2e183ea")
+		(property "Reference" "#PWR089"
+			(at 68.58 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 68.58 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 68.58 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c19c8840-b10a-43e3-ace1-d28c6be46e57")
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/0c625b57-2ba8-40e9-b547-0ed0363dd1ec"
+					(reference "#PWR089")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 106.68 203.2 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10891,7 +10962,7 @@
 	)
 	(symbol
 		(lib_id "My Libraries:+VSYS")
-		(at 106.68 48.26 0)
+		(at 68.58 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -10900,7 +10971,7 @@
 		(fields_autoplaced yes)
 		(uuid "e9e867e2-8548-4003-b6af-f53a0600f022")
 		(property "Reference" "#PWR037"
-			(at 106.68 43.18 0)
+			(at 68.58 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10909,7 +10980,7 @@
 			)
 		)
 		(property "Value" "+VSYS"
-			(at 106.68 44.45 0)
+			(at 68.58 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10917,7 +10988,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 100.203 48.26 0)
+			(at 62.103 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10926,7 +10997,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 100.203 48.26 0)
+			(at 62.103 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10935,7 +11006,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 106.68 48.26 0)
+			(at 68.58 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11175,6 +11246,85 @@
 			(project "BK4000TG_V3"
 				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/0c625b57-2ba8-40e9-b547-0ed0363dd1ec"
 					(reference "C19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 68.58 53.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fc6c1d2b-08d0-4ebf-84d1-fd300375bbda")
+		(property "Reference" "C43"
+			(at 71.12 52.7049 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "470u"
+			(at 71.12 55.2449 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_Tantalum_SMD:CP_EIA-7343-31_Kemet-D"
+			(at 68.58 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 68.58 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 68.58 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
+			(at 68.58 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a89beca7-84a3-486d-9ba8-b8fe6638158c")
+		)
+		(pin "2"
+			(uuid "674d233c-5efc-47e0-8ca5-db2cd13bb6d5")
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/0c625b57-2ba8-40e9-b547-0ed0363dd1ec"
+					(reference "C43")
 					(unit 1)
 				)
 			)
