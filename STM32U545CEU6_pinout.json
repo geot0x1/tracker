@@ -1,0 +1,4141 @@
+{
+  "$schema_note": "Structured per the kicad-happy datasheets skill Pin/AltFunction shape (schemas/pinout.schema.json), extended with af_code lookups and a power section for schematic/PCB review use.",
+  "mpn": "STM32U545CEU6",
+  "mpn_family": "STM32U545xx",
+  "datasheet": {
+    "title": "STM32U545xx - Ultra-low-power Arm Cortex-M33 MCU with TrustZone, 512-Kbyte Flash, 274-Kbyte SRAM, USB",
+    "document_number": "DS14216",
+    "revision": "Rev 5",
+    "source_file": "DS_stm32u545ce.pdf"
+  },
+  "package": {
+    "name": "UFQFPN48",
+    "description": "48-pin, 7x7 mm, 0.5 mm pitch QFN with exposed thermal pad (matches KiCad footprint QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm)",
+    "pin_count": 48,
+    "smps_variant": false,
+    "notes": "Non-SMPS ordering variant selected (user requirement: NO SMPS). Package shares identical pin numbering 1-48 with LQFP48 per datasheet Table 27 (same column). No dedicated VDDUSB or VDDIO2 pin is broken out on this 48-pin package; USB (_u) and VDDIO2-only (_s) I/O structure suffixes are architecturally defined but the relevant supply pins are not physically exposed here - verify against reference manual before assuming behavior identical to 100-pin variants.",
+    "exposed_pad": {
+      "present": true,
+      "recommended_connection": "VSS (ground) - see package mechanical/thermal section of datasheet for thermal via recommendations"
+    }
+  },
+  "part_number_decode": {
+    "example_pattern": "STM32 U 545 C E U 6 Q TR",
+    "product_type": "U = ultra-low-power",
+    "device_subfamily": "545 = STM32U545xx with USB and hardware AES/PKA crypto accelerator",
+    "pin_count_code": "C = 48 pins",
+    "flash_size_code": "E = 512 Kbytes",
+    "package_code_used": "U = UFQFPN"
+  },
+  "io_structure_legend": {
+    "S": "Supply pin",
+    "I": "Input only pin",
+    "I/O": "Input/output pin",
+    "FT": "5V-tolerant I/O",
+    "TT": "3.6V-tolerant I/O",
+    "RST": "Bidirectional reset pin with embedded weak pull-up resistor",
+    "_a": "I/O with analog switch function supplied by VDDA",
+    "_f": "I/O Fm+ (1 MHz I2C) capable",
+    "_h": "I/O with high-speed low-voltage mode",
+    "_o": "I/O with OSC32_IN/OSC32_OUT capability",
+    "_s": "I/O supplied only by VDDIO2",
+    "_t": "I/O with tamper function supplied by VSW",
+    "_u": "I/O with USB function supplied by VDDUSB",
+    "_v": "I/O very high-speed capable"
+  },
+  "pin_notes_legend": {
+    "(1)": "Function availability depends on the chosen device.",
+    "(2)": "PC13/PC14/PC15 are supplied through the power switch (VSW). The switch sinks a limited current (3 mA): PC13 speed must not exceed 2 MHz with max load 30 pF; refer to FT_o electrical characteristics for PC14/PC15; these GPIOs must not be used as current sources (e.g. to drive an LED).",
+    "(3)": "After a backup-domain power-up, PC13/PC14/PC15 operate as GPIOs. Their function then depends on RTC register content, which is not reset by a system reset. See backup domain / RTC register description in the reference manual.",
+    "(4)": "After reset, this pin is configured as a JTAG/SWD alternate function. Internal pull-up on PA15/PA13/PB4 and internal pull-down on PA14 are activated by default.",
+    "(5)": "Power supply is VDDIO2."
+  },
+  "power_rails": {
+    "VDD": {
+      "description": "Standard digital supply (also powers most GPIOs on this package)",
+      "min_v": 1.71,
+      "max_v": 3.6,
+      "note": "Max drops to 2.7 V if IO_VDD_HSLV (high-speed low-voltage) option is enabled."
+    },
+    "VDDA": {
+      "description": "Analog supply for ADC/DAC/OPAMP/COMP/VREFBUF",
+      "min_v_by_use": {
+        "COMP": 1.58,
+        "DAC_or_OPAMP": 1.6,
+        "ADC": 1.62,
+        "VREFBUF_normal_mode": 1.8,
+        "unused": 0
+      },
+      "max_v": 3.6,
+      "note": "Decouple per datasheet figure: 100 nF + 1 uF close to VDDA, plus 100 nF + 1 uF on VREF+/VREF-."
+    },
+    "VBAT": {
+      "description": "Backup domain supply (RTC, LSE, TAMP, backup registers) when VDD absent",
+      "min_v": 1.65,
+      "max_v": 3.6
+    },
+    "VCAP": {
+      "description": "Internal core voltage regulator (LDO) output - requires external decoupling capacitor, do not use as a supply source",
+      "required_external_capacitor": {
+        "value": "4.7 uF (or 2x 2.2 uF)",
+        "tolerance": "+/-20%",
+        "esr_max": "20 mOhm at 3 MHz",
+        "rated_voltage_min": "10 V"
+      }
+    },
+    "VIN_absolute_max_note": "Standard I/O: -0.3V to Min(min(VDD,VDDA,VDDUSB,VDDIO2)+3.6V, 5.5V). Always respect VIN max regardless of formula result; see Table 31 for max injected current."
+  },
+  "boot_strap_pins": {
+    "PH3-BOOT0": "Physical BOOT0 pin, sampled at reset to select boot mode (system memory vs main flash, per Table 6/Table 7 boot mode tables). Confirm firmware/OB configuration matches the schematic pull resistor.",
+    "PA13_PA14_PA15_PB4_JTAG_SWD": "After reset these pins default to JTAG/SWD alternate function with internal pull-up (PA13/PA15/PB4) or pull-down (PA14) already active - factor this into any external pull network sizing (see pin_notes_legend (4))."
+  },
+  "pins": [
+    {
+      "numbers": [
+        "1"
+      ],
+      "name": "VBAT",
+      "gpio_base_name": null,
+      "type": "power_in_or_out",
+      "pin_type_raw": "S",
+      "io_structure": {
+        "raw": "-",
+        "base": null,
+        "suffixes": [],
+        "meaning": []
+      },
+      "power_domain": "VBAT",
+      "is_5v_tolerant": null,
+      "notes": [],
+      "alt_functions": [],
+      "additional_functions": [
+        {
+          "name": "VBAT",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 101,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "2"
+      ],
+      "name": "PC13",
+      "gpio_base_name": "PC13",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT",
+        "base": "FT",
+        "suffixes": [],
+        "meaning": [
+          "5V-tolerant I/O"
+        ]
+      },
+      "power_domain": "VSW_backup_domain_power_switch",
+      "is_5v_tolerant": true,
+      "notes": [
+        {
+          "code": "(2)",
+          "text": "PC13/PC14/PC15 are supplied through the power switch (VSW). The switch sinks a limited current (3 mA): PC13 speed must not exceed 2 MHz with max load 30 pF; refer to FT_o electrical characteristics for PC14/PC15; these GPIOs must not be used as current sources (e.g. to drive an LED)."
+        },
+        {
+          "code": "(3)",
+          "text": "After a backup-domain power-up, PC13/PC14/PC15 operate as GPIOs. Their function then depends on RTC register content, which is not reset by a system reset. See backup domain / RTC register description in the reference manual."
+        }
+      ],
+      "alt_functions": [
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "WKUP2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "RTC_TS",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "RTC_OUT1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TAMP_IN1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TAMP_OUT2",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 101,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "3"
+      ],
+      "name": "PC14-OSC32_IN (PC14)",
+      "gpio_base_name": "PC14",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_o",
+        "base": "FT",
+        "suffixes": [
+          "_o"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with OSC32_IN/OSC32_OUT capability"
+        ]
+      },
+      "power_domain": "VSW_backup_domain_power_switch",
+      "is_5v_tolerant": true,
+      "notes": [
+        {
+          "code": "(2)",
+          "text": "PC13/PC14/PC15 are supplied through the power switch (VSW). The switch sinks a limited current (3 mA): PC13 speed must not exceed 2 MHz with max load 30 pF; refer to FT_o electrical characteristics for PC14/PC15; these GPIOs must not be used as current sources (e.g. to drive an LED)."
+        },
+        {
+          "code": "(3)",
+          "text": "After a backup-domain power-up, PC13/PC14/PC15 operate as GPIOs. Their function then depends on RTC register content, which is not reset by a system reset. See backup domain / RTC register description in the reference manual."
+        }
+      ],
+      "alt_functions": [
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "OSC32_IN",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 102,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "4"
+      ],
+      "name": "PC15-OSC32_OUT (PC15)",
+      "gpio_base_name": "PC15",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_o",
+        "base": "FT",
+        "suffixes": [
+          "_o"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with OSC32_IN/OSC32_OUT capability"
+        ]
+      },
+      "power_domain": "VSW_backup_domain_power_switch",
+      "is_5v_tolerant": true,
+      "notes": [
+        {
+          "code": "(2)",
+          "text": "PC13/PC14/PC15 are supplied through the power switch (VSW). The switch sinks a limited current (3 mA): PC13 speed must not exceed 2 MHz with max load 30 pF; refer to FT_o electrical characteristics for PC14/PC15; these GPIOs must not be used as current sources (e.g. to drive an LED)."
+        },
+        {
+          "code": "(3)",
+          "text": "After a backup-domain power-up, PC13/PC14/PC15 operate as GPIOs. Their function then depends on RTC register content, which is not reset by a system reset. See backup domain / RTC register description in the reference manual."
+        }
+      ],
+      "alt_functions": [
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "OSC32_OUT",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 102,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "5"
+      ],
+      "name": "PH0-OSC_IN (PH0)",
+      "gpio_base_name": "PH0",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT",
+        "base": "FT",
+        "suffixes": [],
+        "meaning": [
+          "5V-tolerant I/O"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "OSC_IN",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 102,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "6"
+      ],
+      "name": "PH1-OSC_OUT (PH1)",
+      "gpio_base_name": "PH1",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT",
+        "base": "FT",
+        "suffixes": [],
+        "meaning": [
+          "5V-tolerant I/O"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "OSC_OUT",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 102,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "7"
+      ],
+      "name": "NRST",
+      "gpio_base_name": null,
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "RST",
+        "base": "RST",
+        "suffixes": [],
+        "meaning": [
+          "Bidirectional reset pin with embedded weak pull-up resistor"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": null,
+      "notes": [],
+      "alt_functions": [],
+      "additional_functions": [
+        {
+          "name": "NRST",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 102,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "8"
+      ],
+      "name": "VSSA",
+      "gpio_base_name": null,
+      "type": "power_in_or_out",
+      "pin_type_raw": "S",
+      "io_structure": {
+        "raw": "-",
+        "base": null,
+        "suffixes": [],
+        "meaning": []
+      },
+      "power_domain": "GNDA",
+      "is_5v_tolerant": null,
+      "notes": [],
+      "alt_functions": [],
+      "additional_functions": [],
+      "evidence": {
+        "page": 103,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "9"
+      ],
+      "name": "VDDA",
+      "gpio_base_name": null,
+      "type": "power_in_or_out",
+      "pin_type_raw": "S",
+      "io_structure": {
+        "raw": "-",
+        "base": null,
+        "suffixes": [],
+        "meaning": []
+      },
+      "power_domain": "VDDA",
+      "is_5v_tolerant": null,
+      "notes": [],
+      "alt_functions": [],
+      "additional_functions": [],
+      "evidence": {
+        "page": 103,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "10"
+      ],
+      "name": "PA0",
+      "gpio_base_name": "PA0",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_hat",
+        "base": "FT",
+        "suffixes": [
+          "_h",
+          "_a",
+          "_t"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA",
+          "I/O with tamper function supplied by VSW"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM2_CH1",
+          "peripheral": "TIM2",
+          "role": "CH1",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM5_CH1",
+          "peripheral": "TIM5",
+          "role": "CH1",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM8_ETR",
+          "peripheral": "TIM8",
+          "role": "ETR",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI3_RDY",
+          "peripheral": "SPI3",
+          "role": "RDY",
+          "af_code": "AF6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "UART4_TX",
+          "peripheral": "UART4",
+          "role": "TX",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_NCS",
+          "peripheral": "OCTOSPI1",
+          "role": "NCS",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "AUDIOCLK",
+          "peripheral": "AUDIOCLK",
+          "role": null,
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM2_ETR",
+          "peripheral": "TIM2",
+          "role": "ETR",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "OPAMP1_VINP",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC1_IN5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TAMP_IN2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TAMP_OUT1",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 103,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "11"
+      ],
+      "name": "PA1",
+      "gpio_base_name": "PA1",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_hat",
+        "base": "FT",
+        "suffixes": [
+          "_h",
+          "_a",
+          "_t"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA",
+          "I/O with tamper function supplied by VSW"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "LPTIM1_CH2",
+          "peripheral": "LPTIM1",
+          "role": "CH2",
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM2_CH2",
+          "peripheral": "TIM2",
+          "role": "CH2",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM5_CH2",
+          "peripheral": "TIM5",
+          "role": "CH2",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C1_SMBA",
+          "peripheral": "I2C1",
+          "role": "SMBA",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_SCK",
+          "peripheral": "SPI1",
+          "role": "SCK",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "UART4_RX",
+          "peripheral": "UART4",
+          "role": "RX",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_DQS",
+          "peripheral": "OCTOSPI1",
+          "role": "DQS",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPGPIO1_P0",
+          "peripheral": "LPGPIO1",
+          "role": "P0",
+          "af_code": "AF11",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM15_CH1N",
+          "peripheral": "TIM15",
+          "role": "CH1N",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "OPAMP1_VINM",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC1_IN6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TAMP_IN5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TAMP_OUT4",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 103,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "12"
+      ],
+      "name": "PA2",
+      "gpio_base_name": "PA2",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_ha",
+        "base": "FT",
+        "suffixes": [
+          "_h",
+          "_a"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM2_CH3",
+          "peripheral": "TIM2",
+          "role": "CH3",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM5_CH3",
+          "peripheral": "TIM5",
+          "role": "CH3",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_RDY",
+          "peripheral": "SPI1",
+          "role": "RDY",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPUART1_TX",
+          "peripheral": "LPUART1",
+          "role": "TX",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_NCS",
+          "peripheral": "OCTOSPI1",
+          "role": "NCS",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM15_CH1",
+          "peripheral": "TIM15",
+          "role": "CH1",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "COMP1_INP3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC1_IN7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LSCO",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 103,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "13"
+      ],
+      "name": "PA3",
+      "gpio_base_name": "PA3",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "TT_hav",
+        "base": "TT",
+        "suffixes": [
+          "_h",
+          "_a",
+          "_v"
+        ],
+        "meaning": [
+          "3.6V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA",
+          "I/O very high-speed capable"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": false,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM2_CH4",
+          "peripheral": "TIM2",
+          "role": "CH4",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM5_CH4",
+          "peripheral": "TIM5",
+          "role": "CH4",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_CK1",
+          "peripheral": "SAI1",
+          "role": "CK1",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPUART1_RX",
+          "peripheral": "LPUART1",
+          "role": "RX",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_CLK",
+          "peripheral": "OCTOSPI1",
+          "role": "CLK",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPGPIO1_P1",
+          "peripheral": "LPGPIO1",
+          "role": "P1",
+          "af_code": "AF11",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_MCLK_A",
+          "peripheral": "SAI1",
+          "role": "MCLK_A",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM15_CH2",
+          "peripheral": "TIM15",
+          "role": "CH2",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "OPAMP1_VOUT",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC1_IN8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP5",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 104,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "14"
+      ],
+      "name": "PA4",
+      "gpio_base_name": "PA4",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "TT_ha",
+        "base": "TT",
+        "suffixes": [
+          "_h",
+          "_a"
+        ],
+        "meaning": [
+          "3.6V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": false,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "OCTOSPI1_NCS",
+          "peripheral": "OCTOSPI1",
+          "role": "NCS",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_NSS",
+          "peripheral": "SPI1",
+          "role": "NSS",
+          "af_code": "AF5",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "SPI3_NSS",
+          "peripheral": "SPI3",
+          "role": "NSS",
+          "af_code": "AF6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "DCMI_HSYNC",
+          "peripheral": "DCMI",
+          "role": "HSYNC",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "PSSI_DE",
+          "peripheral": "PSSI",
+          "role": "DE",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_FS_B",
+          "peripheral": "SAI1",
+          "role": "FS_B",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM2_CH1",
+          "peripheral": "LPTIM2",
+          "role": "CH1",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "ADC1_IN9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC4_IN9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "DAC1_OUT1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP2",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 104,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "15"
+      ],
+      "name": "PA5",
+      "gpio_base_name": "PA5",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "TT_a",
+        "base": "TT",
+        "suffixes": [
+          "_a"
+        ],
+        "meaning": [
+          "3.6V-tolerant I/O",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": false,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "CSLEEP",
+          "peripheral": "CSLEEP",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM2_CH1",
+          "peripheral": "TIM2",
+          "role": "CH1",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM2_ETR",
+          "peripheral": "TIM2",
+          "role": "ETR",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM8_CH1N",
+          "peripheral": "TIM8",
+          "role": "CH1N",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "PSSI_D14",
+          "peripheral": "PSSI",
+          "role": "D14",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_SCK",
+          "peripheral": "SPI1",
+          "role": "SCK",
+          "af_code": "AF5",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "USART3_RX",
+          "peripheral": "USART3",
+          "role": "RX",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM2_ETR",
+          "peripheral": "LPTIM2",
+          "role": "ETR",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "ADC1_IN10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC4_IN10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "DAC1_OUT2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP6",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 104,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "16"
+      ],
+      "name": "PA6",
+      "gpio_base_name": "PA6",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_ha",
+        "base": "FT",
+        "suffixes": [
+          "_h",
+          "_a"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "CDSTOP",
+          "peripheral": "CDSTOP",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM1_BKIN",
+          "peripheral": "TIM1",
+          "role": "BKIN",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM3_CH1",
+          "peripheral": "TIM3",
+          "role": "CH1",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM8_BKIN",
+          "peripheral": "TIM8",
+          "role": "BKIN",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "DCMI_PIXCLK",
+          "peripheral": "DCMI",
+          "role": "PIXCLK",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "PSSI_PDCK",
+          "peripheral": "PSSI",
+          "role": "PDCK",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_MISO",
+          "peripheral": "SPI1",
+          "role": "MISO",
+          "af_code": "AF5",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "USART3_CTS",
+          "peripheral": "USART3",
+          "role": "CTS",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPUART1_CTS",
+          "peripheral": "LPUART1",
+          "role": "CTS",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_IO3",
+          "peripheral": "OCTOSPI1",
+          "role": "IO3",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPGPIO1_P2",
+          "peripheral": "LPGPIO1",
+          "role": "P2",
+          "af_code": "AF11",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM16_CH1",
+          "peripheral": "TIM16",
+          "role": "CH1",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "ADC1_IN11",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC4_IN11",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP7",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 104,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "17"
+      ],
+      "name": "PA7",
+      "gpio_base_name": "PA7",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_fha",
+        "base": "FT",
+        "suffixes": [
+          "_f",
+          "_h",
+          "_a"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O Fm+ (1 MHz I2C) capable",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "SRDSTOP",
+          "peripheral": "SRDSTOP",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM1_CH1N",
+          "peripheral": "TIM1",
+          "role": "CH1N",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM3_CH2",
+          "peripheral": "TIM3",
+          "role": "CH2",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM8_CH1N",
+          "peripheral": "TIM8",
+          "role": "CH1N",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C3_SCL",
+          "peripheral": "I2C3",
+          "role": "SCL",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_MOSI",
+          "peripheral": "SPI1",
+          "role": "MOSI",
+          "af_code": "AF5",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "USART3_TX",
+          "peripheral": "USART3",
+          "role": "TX",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_IO2",
+          "peripheral": "OCTOSPI1",
+          "role": "IO2",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM2_CH2",
+          "peripheral": "LPTIM2",
+          "role": "CH2",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM17_CH1",
+          "peripheral": "TIM17",
+          "role": "CH1",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "ADC1_IN12",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC4_IN20",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP8",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 105,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "18"
+      ],
+      "name": "PB0",
+      "gpio_base_name": "PB0",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "TT_ha",
+        "base": "TT",
+        "suffixes": [
+          "_h",
+          "_a"
+        ],
+        "meaning": [
+          "3.6V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": false,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM1_CH2N",
+          "peripheral": "TIM1",
+          "role": "CH2N",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM3_CH3",
+          "peripheral": "TIM3",
+          "role": "CH3",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM8_CH2N",
+          "peripheral": "TIM8",
+          "role": "CH2N",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM3_CH1",
+          "peripheral": "LPTIM3",
+          "role": "CH1",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_NSS",
+          "peripheral": "SPI1",
+          "role": "NSS",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART3_CK",
+          "peripheral": "USART3",
+          "role": "CK",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_IO1",
+          "peripheral": "OCTOSPI1",
+          "role": "IO1",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPGPIO1_P9",
+          "peripheral": "LPGPIO1",
+          "role": "P9",
+          "af_code": "AF11",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "COMP1_OUT",
+          "peripheral": "COMP1",
+          "role": "OUT",
+          "af_code": "AF12",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "AUDIOCLK",
+          "peripheral": "AUDIOCLK",
+          "role": null,
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "ADC1_IN15",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC4_IN18",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 105,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "19"
+      ],
+      "name": "PB1",
+      "gpio_base_name": "PB1",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_ha",
+        "base": "FT",
+        "suffixes": [
+          "_h",
+          "_a"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM1_CH3N",
+          "peripheral": "TIM1",
+          "role": "CH3N",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM3_CH4",
+          "peripheral": "TIM3",
+          "role": "CH4",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM8_CH3N",
+          "peripheral": "TIM8",
+          "role": "CH3N",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM3_CH2",
+          "peripheral": "LPTIM3",
+          "role": "CH2",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "MDF1_SDI0",
+          "peripheral": "MDF1",
+          "role": "SDI0",
+          "af_code": "AF6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART3_RTS_DE",
+          "peripheral": "USART3",
+          "role": "RTS_DE",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPUART1_RTS_DE",
+          "peripheral": "LPUART1",
+          "role": "RTS_DE",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_IO0",
+          "peripheral": "OCTOSPI1",
+          "role": "IO0",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPGPIO1_P3",
+          "peripheral": "LPGPIO1",
+          "role": "P3",
+          "af_code": "AF11",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM2_IN1",
+          "peripheral": "LPTIM2",
+          "role": "IN1",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "COMP1_INM1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC1_IN16",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC4_IN19",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP4",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 105,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "20"
+      ],
+      "name": "PB2",
+      "gpio_base_name": "PB2",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_hat",
+        "base": "FT",
+        "suffixes": [
+          "_h",
+          "_a",
+          "_t"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA",
+          "I/O with tamper function supplied by VSW"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "LPTIM1_CH1",
+          "peripheral": "LPTIM1",
+          "role": "CH1",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM8_CH4N",
+          "peripheral": "TIM8",
+          "role": "CH4N",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C3_SMBA",
+          "peripheral": "I2C3",
+          "role": "SMBA",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_RDY",
+          "peripheral": "SPI1",
+          "role": "RDY",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "MDF1_CKI0",
+          "peripheral": "MDF1",
+          "role": "CKI0",
+          "af_code": "AF6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_DQS",
+          "peripheral": "OCTOSPI1",
+          "role": "DQS",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "COMP1_INP2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADC1_IN17",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "RTC_OUT2",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 106,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "21"
+      ],
+      "name": "PB10",
+      "gpio_base_name": "PB10",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_fhv",
+        "base": "FT",
+        "suffixes": [
+          "_f",
+          "_h",
+          "_v"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O Fm+ (1 MHz I2C) capable",
+          "I/O with high-speed low-voltage mode",
+          "I/O very high-speed capable"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM2_CH3",
+          "peripheral": "TIM2",
+          "role": "CH3",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM3_CH1",
+          "peripheral": "LPTIM3",
+          "role": "CH1",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C4_SCL",
+          "peripheral": "I2C4",
+          "role": "SCL",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C2_SCL",
+          "peripheral": "I2C2",
+          "role": "SCL",
+          "af_code": "AF4",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "SPI2_SCK",
+          "peripheral": "SPI2",
+          "role": "SCK",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART3_TX",
+          "peripheral": "USART3",
+          "role": "TX",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPUART1_RX",
+          "peripheral": "LPUART1",
+          "role": "RX",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TSC_SYNC",
+          "peripheral": "TSC",
+          "role": "SYNC",
+          "af_code": "AF9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_CLK",
+          "peripheral": "OCTOSPI1",
+          "role": "CLK",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPGPIO1_P4",
+          "peripheral": "LPGPIO1",
+          "role": "P4",
+          "af_code": "AF11",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "COMP1_OUT",
+          "peripheral": "COMP1",
+          "role": "OUT",
+          "af_code": "AF12",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_SCK_A",
+          "peripheral": "SAI1",
+          "role": "SCK_A",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "WKUP8",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 107,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "22"
+      ],
+      "name": "VCAP",
+      "gpio_base_name": null,
+      "type": "power_in_or_out",
+      "pin_type_raw": "S",
+      "io_structure": {
+        "raw": "-",
+        "base": null,
+        "suffixes": [],
+        "meaning": []
+      },
+      "power_domain": "VCAP_internal_regulator_output",
+      "is_5v_tolerant": null,
+      "notes": [],
+      "alt_functions": [],
+      "additional_functions": [],
+      "evidence": {
+        "page": 107,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "23"
+      ],
+      "name": "VSS",
+      "gpio_base_name": null,
+      "type": "power_in_or_out",
+      "pin_type_raw": "S",
+      "io_structure": {
+        "raw": "-",
+        "base": null,
+        "suffixes": [],
+        "meaning": []
+      },
+      "power_domain": "GND",
+      "is_5v_tolerant": null,
+      "notes": [],
+      "alt_functions": [],
+      "additional_functions": [],
+      "evidence": {
+        "page": 107,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "24"
+      ],
+      "name": "VDD",
+      "gpio_base_name": null,
+      "type": "power_in_or_out",
+      "pin_type_raw": "S",
+      "io_structure": {
+        "raw": "-",
+        "base": null,
+        "suffixes": [],
+        "meaning": []
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": null,
+      "notes": [],
+      "alt_functions": [],
+      "additional_functions": [],
+      "evidence": {
+        "page": 107,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "25"
+      ],
+      "name": "PB12",
+      "gpio_base_name": "PB12",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_hav",
+        "base": "FT",
+        "suffixes": [
+          "_h",
+          "_a",
+          "_v"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA",
+          "I/O very high-speed capable"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM1_BKIN",
+          "peripheral": "TIM1",
+          "role": "BKIN",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C2_SMBA",
+          "peripheral": "I2C2",
+          "role": "SMBA",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI2_NSS",
+          "peripheral": "SPI2",
+          "role": "NSS",
+          "af_code": "AF5",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "MDF1_SDI1",
+          "peripheral": "MDF1",
+          "role": "SDI1",
+          "af_code": "AF6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART3_CK",
+          "peripheral": "USART3",
+          "role": "CK",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPUART1_RTS_DE",
+          "peripheral": "LPUART1",
+          "role": "RTS_DE",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TSC_G1_IO1",
+          "peripheral": "TSC",
+          "role": "G1_IO1",
+          "af_code": "AF9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_NCLK",
+          "peripheral": "OCTOSPI1",
+          "role": "NCLK",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM15_BKIN",
+          "peripheral": "TIM15",
+          "role": "BKIN",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [],
+      "evidence": {
+        "page": 108,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "26"
+      ],
+      "name": "PB13",
+      "gpio_base_name": "PB13",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_fa",
+        "base": "FT",
+        "suffixes": [
+          "_f",
+          "_a"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O Fm+ (1 MHz I2C) capable",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM1_CH1N",
+          "peripheral": "TIM1",
+          "role": "CH1N",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM3_IN1",
+          "peripheral": "LPTIM3",
+          "role": "IN1",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C2_SCL",
+          "peripheral": "I2C2",
+          "role": "SCL",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI2_SCK",
+          "peripheral": "SPI2",
+          "role": "SCK",
+          "af_code": "AF5",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "MDF1_CKI1",
+          "peripheral": "MDF1",
+          "role": "CKI1",
+          "af_code": "AF6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART3_CTS",
+          "peripheral": "USART3",
+          "role": "CTS",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPUART1_CTS",
+          "peripheral": "LPUART1",
+          "role": "CTS",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TSC_G1_IO2",
+          "peripheral": "TSC",
+          "role": "G1_IO2",
+          "af_code": "AF9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM15_CH1N",
+          "peripheral": "TIM15",
+          "role": "CH1N",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [],
+      "evidence": {
+        "page": 108,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "27"
+      ],
+      "name": "PB14",
+      "gpio_base_name": "PB14",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_fa",
+        "base": "FT",
+        "suffixes": [
+          "_f",
+          "_a"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O Fm+ (1 MHz I2C) capable",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM1_CH2N",
+          "peripheral": "TIM1",
+          "role": "CH2N",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM3_ETR",
+          "peripheral": "LPTIM3",
+          "role": "ETR",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM8_CH2N",
+          "peripheral": "TIM8",
+          "role": "CH2N",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C2_SDA",
+          "peripheral": "I2C2",
+          "role": "SDA",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI2_MISO",
+          "peripheral": "SPI2",
+          "role": "MISO",
+          "af_code": "AF5",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "USART3_RTS_DE",
+          "peripheral": "USART3",
+          "role": "RTS_DE",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TSC_G1_IO3",
+          "peripheral": "TSC",
+          "role": "G1_IO3",
+          "af_code": "AF9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM15_CH1",
+          "peripheral": "TIM15",
+          "role": "CH1",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [],
+      "evidence": {
+        "page": 108,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "28"
+      ],
+      "name": "PB15",
+      "gpio_base_name": "PB15",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT",
+        "base": "FT",
+        "suffixes": [],
+        "meaning": [
+          "5V-tolerant I/O"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "RTC_REFIN",
+          "peripheral": "RTC",
+          "role": "REFIN",
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM1_CH3N",
+          "peripheral": "TIM1",
+          "role": "CH3N",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM2_IN2",
+          "peripheral": "LPTIM2",
+          "role": "IN2",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM8_CH3N",
+          "peripheral": "TIM8",
+          "role": "CH3N",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI2_MOSI",
+          "peripheral": "SPI2",
+          "role": "MOSI",
+          "af_code": "AF5",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "TIM15_CH2",
+          "peripheral": "TIM15",
+          "role": "CH2",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "WKUP7",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 108,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "29"
+      ],
+      "name": "PA8",
+      "gpio_base_name": "PA8",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_hv",
+        "base": "FT",
+        "suffixes": [
+          "_h",
+          "_v"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O very high-speed capable"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "MCO",
+          "peripheral": "MCO",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM1_CH1",
+          "peripheral": "TIM1",
+          "role": "CH1",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_CK2",
+          "peripheral": "SAI1",
+          "role": "CK2",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_RDY",
+          "peripheral": "SPI1",
+          "role": "RDY",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART1_CK",
+          "peripheral": "USART1",
+          "role": "CK",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USB_SOF",
+          "peripheral": "USB",
+          "role": "SOF",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TRACECLK",
+          "peripheral": "TRACECLK",
+          "role": null,
+          "af_code": "AF12",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_SCK_A",
+          "peripheral": "SAI1",
+          "role": "SCK_A",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM2_CH1",
+          "peripheral": "LPTIM2",
+          "role": "CH1",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [],
+      "evidence": {
+        "page": 111,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "30"
+      ],
+      "name": "PA9",
+      "gpio_base_name": "PA9",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT",
+        "base": "FT",
+        "suffixes": [],
+        "meaning": [
+          "5V-tolerant I/O"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM1_CH2",
+          "peripheral": "TIM1",
+          "role": "CH2",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI2_SCK",
+          "peripheral": "SPI2",
+          "role": "SCK",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "DCMI_D0",
+          "peripheral": "DCMI",
+          "role": "D0",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "PSSI_D0",
+          "peripheral": "PSSI",
+          "role": "D0",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART1_TX",
+          "peripheral": "USART1",
+          "role": "TX",
+          "af_code": "AF7",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "SAI1_FS_A",
+          "peripheral": "SAI1",
+          "role": "FS_A",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM15_BKIN",
+          "peripheral": "TIM15",
+          "role": "BKIN",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [],
+      "evidence": {
+        "page": 111,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "31"
+      ],
+      "name": "PA10",
+      "gpio_base_name": "PA10",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT",
+        "base": "FT",
+        "suffixes": [],
+        "meaning": [
+          "5V-tolerant I/O"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "CRS_SYNC",
+          "peripheral": "CRS",
+          "role": "SYNC",
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM1_CH3",
+          "peripheral": "TIM1",
+          "role": "CH3",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM2_IN2",
+          "peripheral": "LPTIM2",
+          "role": "IN2",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_D1",
+          "peripheral": "SAI1",
+          "role": "D1",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "DCMI_D1",
+          "peripheral": "DCMI",
+          "role": "D1",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "PSSI_D1",
+          "peripheral": "PSSI",
+          "role": "D1",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART1_RX",
+          "peripheral": "USART1",
+          "role": "RX",
+          "af_code": "AF7",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "SAI1_SD_A",
+          "peripheral": "SAI1",
+          "role": "SD_A",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM17_BKIN",
+          "peripheral": "TIM17",
+          "role": "BKIN",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [],
+      "evidence": {
+        "page": 111,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "32"
+      ],
+      "name": "PA11",
+      "gpio_base_name": "PA11",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_u",
+        "base": "FT",
+        "suffixes": [
+          "_u"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with USB function supplied by VDDUSB"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM1_CH4",
+          "peripheral": "TIM1",
+          "role": "CH4",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM1_BKIN2",
+          "peripheral": "TIM1",
+          "role": "BKIN2",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_MISO",
+          "peripheral": "SPI1",
+          "role": "MISO",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART1_CTS",
+          "peripheral": "USART1",
+          "role": "CTS",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "FDCAN1_RX",
+          "peripheral": "FDCAN1",
+          "role": "RX",
+          "af_code": "AF9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "USB_DM",
+          "active_by_default_after_reset": true
+        }
+      ],
+      "evidence": {
+        "page": 111,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "33"
+      ],
+      "name": "PA12",
+      "gpio_base_name": "PA12",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_u",
+        "base": "FT",
+        "suffixes": [
+          "_u"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with USB function supplied by VDDUSB"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM1_ETR",
+          "peripheral": "TIM1",
+          "role": "ETR",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_MOSI",
+          "peripheral": "SPI1",
+          "role": "MOSI",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_NCS",
+          "peripheral": "OCTOSPI1",
+          "role": "NCS",
+          "af_code": "AF6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART1_RTS_DE",
+          "peripheral": "USART1",
+          "role": "RTS_DE",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "FDCAN1_TX",
+          "peripheral": "FDCAN1",
+          "role": "TX",
+          "af_code": "AF9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "USB_DP",
+          "active_by_default_after_reset": true
+        }
+      ],
+      "evidence": {
+        "page": 111,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "34"
+      ],
+      "name": "PA13 (JTMS/ SWDIO)",
+      "gpio_base_name": "PA13",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT",
+        "base": "FT",
+        "suffixes": [],
+        "meaning": [
+          "5V-tolerant I/O"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [
+        {
+          "code": "(4)",
+          "text": "After reset, this pin is configured as a JTAG/SWD alternate function. Internal pull-up on PA15/PA13/PB4 and internal pull-down on PA14 are activated by default."
+        }
+      ],
+      "alt_functions": [
+        {
+          "name": "JTMS",
+          "peripheral": "JTMS",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SWDIO",
+          "peripheral": "SWDIO",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "IR_OUT",
+          "peripheral": "IR",
+          "role": "OUT",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USB_NOE",
+          "peripheral": "USB",
+          "role": "NOE",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_SD_B",
+          "peripheral": "SAI1",
+          "role": "SD_B",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [],
+      "evidence": {
+        "page": 112,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "35"
+      ],
+      "name": "VSS",
+      "gpio_base_name": null,
+      "type": "power_in_or_out",
+      "pin_type_raw": "S",
+      "io_structure": {
+        "raw": "-",
+        "base": null,
+        "suffixes": [],
+        "meaning": []
+      },
+      "power_domain": "GND",
+      "is_5v_tolerant": null,
+      "notes": [],
+      "alt_functions": [],
+      "additional_functions": [],
+      "evidence": {
+        "page": 112,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "36"
+      ],
+      "name": "VDD",
+      "gpio_base_name": null,
+      "type": "power_in_or_out",
+      "pin_type_raw": "S",
+      "io_structure": {
+        "raw": "-",
+        "base": null,
+        "suffixes": [],
+        "meaning": []
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": null,
+      "notes": [],
+      "alt_functions": [],
+      "additional_functions": [],
+      "evidence": {
+        "page": 112,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "37"
+      ],
+      "name": "PA14 (JTCK/ SWCLK)",
+      "gpio_base_name": "PA14",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT",
+        "base": "FT",
+        "suffixes": [],
+        "meaning": [
+          "5V-tolerant I/O"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [
+        {
+          "code": "(4)",
+          "text": "After reset, this pin is configured as a JTAG/SWD alternate function. Internal pull-up on PA15/PA13/PB4 and internal pull-down on PA14 are activated by default."
+        }
+      ],
+      "alt_functions": [
+        {
+          "name": "JTCK",
+          "peripheral": "JTCK",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SWCLK",
+          "peripheral": "SWCLK",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM1_CH1",
+          "peripheral": "LPTIM1",
+          "role": "CH1",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C1_SMBA",
+          "peripheral": "I2C1",
+          "role": "SMBA",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C4_SMBA",
+          "peripheral": "I2C4",
+          "role": "SMBA",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USB_SOF",
+          "peripheral": "USB",
+          "role": "SOF",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_FS_B",
+          "peripheral": "SAI1",
+          "role": "FS_B",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [],
+      "evidence": {
+        "page": 112,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "38"
+      ],
+      "name": "PA15 (JTDI)",
+      "gpio_base_name": "PA15",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT",
+        "base": "FT",
+        "suffixes": [],
+        "meaning": [
+          "5V-tolerant I/O"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [
+        {
+          "code": "(4)",
+          "text": "After reset, this pin is configured as a JTAG/SWD alternate function. Internal pull-up on PA15/PA13/PB4 and internal pull-down on PA14 are activated by default."
+        }
+      ],
+      "alt_functions": [
+        {
+          "name": "JTDI",
+          "peripheral": "JTDI",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM2_CH1",
+          "peripheral": "TIM2",
+          "role": "CH1",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM2_ETR",
+          "peripheral": "TIM2",
+          "role": "ETR",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_NSS",
+          "peripheral": "SPI1",
+          "role": "NSS",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI3_NSS",
+          "peripheral": "SPI3",
+          "role": "NSS",
+          "af_code": "AF6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART3_RTS_DE",
+          "peripheral": "USART3",
+          "role": "RTS_DE",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "UART4_RTS_DE",
+          "peripheral": "UART4",
+          "role": "RTS_DE",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [],
+      "evidence": {
+        "page": 112,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "39"
+      ],
+      "name": "PB3 (JTDO/ TRACESWO)",
+      "gpio_base_name": "PB3",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_fa",
+        "base": "FT",
+        "suffixes": [
+          "_f",
+          "_a"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O Fm+ (1 MHz I2C) capable",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "JTDO",
+          "peripheral": "JTDO",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TRACESWO",
+          "peripheral": "TRACESWO",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM2_CH2",
+          "peripheral": "TIM2",
+          "role": "CH2",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM1_CH1",
+          "peripheral": "LPTIM1",
+          "role": "CH1",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADF1_CCK0",
+          "peripheral": "ADF1",
+          "role": "CCK0",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C1_SDA",
+          "peripheral": "I2C1",
+          "role": "SDA",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_SCK",
+          "peripheral": "SPI1",
+          "role": "SCK",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI3_SCK",
+          "peripheral": "SPI3",
+          "role": "SCK",
+          "af_code": "AF6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART1_RTS_DE",
+          "peripheral": "USART1",
+          "role": "RTS_DE",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "CRS_SYNC",
+          "peripheral": "CRS",
+          "role": "SYNC",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPGPIO1_P11",
+          "peripheral": "LPGPIO1",
+          "role": "P11",
+          "af_code": "AF11",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_SCK_B",
+          "peripheral": "SAI1",
+          "role": "SCK_B",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "COMP1_INP4",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 115,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "40"
+      ],
+      "name": "PB4 (NJTRST)",
+      "gpio_base_name": "PB4",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_fa",
+        "base": "FT",
+        "suffixes": [
+          "_f",
+          "_a"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O Fm+ (1 MHz I2C) capable",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [
+        {
+          "code": "(4)",
+          "text": "After reset, this pin is configured as a JTAG/SWD alternate function. Internal pull-up on PA15/PA13/PB4 and internal pull-down on PA14 are activated by default."
+        }
+      ],
+      "alt_functions": [
+        {
+          "name": "NJTRST",
+          "peripheral": "NJTRST",
+          "role": null,
+          "af_code": "AF0",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPTIM1_CH2",
+          "peripheral": "LPTIM1",
+          "role": "CH2",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM3_CH1",
+          "peripheral": "TIM3",
+          "role": "CH1",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "ADF1_SDI0",
+          "peripheral": "ADF1",
+          "role": "SDI0",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C3_SDA",
+          "peripheral": "I2C3",
+          "role": "SDA",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_MISO",
+          "peripheral": "SPI1",
+          "role": "MISO",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI3_MISO",
+          "peripheral": "SPI3",
+          "role": "MISO",
+          "af_code": "AF6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART1_CTS",
+          "peripheral": "USART1",
+          "role": "CTS",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "UART5_RTS_DE",
+          "peripheral": "UART5",
+          "role": "RTS_DE",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TSC_G2_IO1",
+          "peripheral": "TSC",
+          "role": "G2_IO1",
+          "af_code": "AF9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "DCMI_D12",
+          "peripheral": "DCMI",
+          "role": "D12",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "PSSI_D12",
+          "peripheral": "PSSI",
+          "role": "D12",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "LPGPIO1_P12",
+          "peripheral": "LPGPIO1",
+          "role": "P12",
+          "af_code": "AF11",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_MCLK_B",
+          "peripheral": "SAI1",
+          "role": "MCLK_B",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM17_BKIN",
+          "peripheral": "TIM17",
+          "role": "BKIN",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "COMP1_INP5",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 115,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "41"
+      ],
+      "name": "PB5",
+      "gpio_base_name": "PB5",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_hav",
+        "base": "FT",
+        "suffixes": [
+          "_h",
+          "_a",
+          "_v"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA",
+          "I/O very high-speed capable"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "LPTIM1_IN1",
+          "peripheral": "LPTIM1",
+          "role": "IN1",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM3_CH2",
+          "peripheral": "TIM3",
+          "role": "CH2",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "OCTOSPI1_NCLK",
+          "peripheral": "OCTOSPI1",
+          "role": "NCLK",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C1_SMBA",
+          "peripheral": "I2C1",
+          "role": "SMBA",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI1_MOSI",
+          "peripheral": "SPI1",
+          "role": "MOSI",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI3_MOSI",
+          "peripheral": "SPI3",
+          "role": "MOSI",
+          "af_code": "AF6",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "USART1_CK",
+          "peripheral": "USART1",
+          "role": "CK",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "UART5_CTS",
+          "peripheral": "UART5",
+          "role": "CTS",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TSC_G2_IO2",
+          "peripheral": "TSC",
+          "role": "G2_IO2",
+          "af_code": "AF9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "DCMI_D10",
+          "peripheral": "DCMI",
+          "role": "D10",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "PSSI_D10",
+          "peripheral": "PSSI",
+          "role": "D10",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_SD_B",
+          "peripheral": "SAI1",
+          "role": "SD_B",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM16_BKIN",
+          "peripheral": "TIM16",
+          "role": "BKIN",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "WKUP6",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 116,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "42"
+      ],
+      "name": "PB6",
+      "gpio_base_name": "PB6",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_fa",
+        "base": "FT",
+        "suffixes": [
+          "_f",
+          "_a"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O Fm+ (1 MHz I2C) capable",
+          "I/O with analog switch function supplied by VDDA"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "LPTIM1_ETR",
+          "peripheral": "LPTIM1",
+          "role": "ETR",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM4_CH1",
+          "peripheral": "TIM4",
+          "role": "CH1",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM8_BKIN2",
+          "peripheral": "TIM8",
+          "role": "BKIN2",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C1_SCL",
+          "peripheral": "I2C1",
+          "role": "SCL",
+          "af_code": "AF4",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "I2C4_SCL",
+          "peripheral": "I2C4",
+          "role": "SCL",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART1_TX",
+          "peripheral": "USART1",
+          "role": "TX",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TSC_G2_IO3",
+          "peripheral": "TSC",
+          "role": "G2_IO3",
+          "af_code": "AF9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "DCMI_D5",
+          "peripheral": "DCMI",
+          "role": "D5",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "PSSI_D5",
+          "peripheral": "PSSI",
+          "role": "D5",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_FS_B",
+          "peripheral": "SAI1",
+          "role": "FS_B",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM16_CH1N",
+          "peripheral": "TIM16",
+          "role": "CH1N",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "COMP1_INP6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP3",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 116,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "43"
+      ],
+      "name": "PB7",
+      "gpio_base_name": "PB7",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_fhav",
+        "base": "FT",
+        "suffixes": [
+          "_f",
+          "_h",
+          "_a",
+          "_v"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O Fm+ (1 MHz I2C) capable",
+          "I/O with high-speed low-voltage mode",
+          "I/O with analog switch function supplied by VDDA",
+          "I/O very high-speed capable"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "LPTIM1_IN2",
+          "peripheral": "LPTIM1",
+          "role": "IN2",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM4_CH2",
+          "peripheral": "TIM4",
+          "role": "CH2",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM8_BKIN",
+          "peripheral": "TIM8",
+          "role": "BKIN",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C1_SDA",
+          "peripheral": "I2C1",
+          "role": "SDA",
+          "af_code": "AF4",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "I2C4_SDA",
+          "peripheral": "I2C4",
+          "role": "SDA",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "USART1_RX",
+          "peripheral": "USART1",
+          "role": "RX",
+          "af_code": "AF7",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "UART4_CTS",
+          "peripheral": "UART4",
+          "role": "CTS",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TSC_G2_IO4",
+          "peripheral": "TSC",
+          "role": "G2_IO4",
+          "af_code": "AF9",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "DCMI_VSYNC",
+          "peripheral": "DCMI",
+          "role": "VSYNC",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "PSSI_RDY",
+          "peripheral": "PSSI",
+          "role": "RDY",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM17_CH1N",
+          "peripheral": "TIM17",
+          "role": "CH1N",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "PVD_IN",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "WKUP4",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 116,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "44"
+      ],
+      "name": "PH3-BOOT0",
+      "gpio_base_name": "PH3",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT",
+        "base": "FT",
+        "suffixes": [],
+        "meaning": [
+          "5V-tolerant I/O"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "BOOT0",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 116,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "45"
+      ],
+      "name": "PB8",
+      "gpio_base_name": "PB8",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_fh",
+        "base": "FT",
+        "suffixes": [
+          "_f",
+          "_h"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O Fm+ (1 MHz I2C) capable",
+          "I/O with high-speed low-voltage mode"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "TIM4_CH3",
+          "peripheral": "TIM4",
+          "role": "CH3",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_CK1",
+          "peripheral": "SAI1",
+          "role": "CK1",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C1_SCL",
+          "peripheral": "I2C1",
+          "role": "SCL",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "MDF1_CCK0",
+          "peripheral": "MDF1",
+          "role": "CCK0",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI3_RDY",
+          "peripheral": "SPI3",
+          "role": "RDY",
+          "af_code": "AF6",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SDMMC1_CKIN",
+          "peripheral": "SDMMC1",
+          "role": "CKIN",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "FDCAN1_RX",
+          "peripheral": "FDCAN1",
+          "role": "RX",
+          "af_code": "AF9",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "DCMI_D6",
+          "peripheral": "DCMI",
+          "role": "D6",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "PSSI_D6",
+          "peripheral": "PSSI",
+          "role": "D6",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SDMMC1_D4",
+          "peripheral": "SDMMC1",
+          "role": "D4",
+          "af_code": "AF12",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_MCLK_A",
+          "peripheral": "SAI1",
+          "role": "MCLK_A",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM16_CH1",
+          "peripheral": "TIM16",
+          "role": "CH1",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [
+        {
+          "name": "WKUP5",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "evidence": {
+        "page": 116,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "46"
+      ],
+      "name": "PB9",
+      "gpio_base_name": "PB9",
+      "type": "bidirectional",
+      "pin_type_raw": "I/O",
+      "io_structure": {
+        "raw": "FT_fh",
+        "base": "FT",
+        "suffixes": [
+          "_f",
+          "_h"
+        ],
+        "meaning": [
+          "5V-tolerant I/O",
+          "I/O Fm+ (1 MHz I2C) capable",
+          "I/O with high-speed low-voltage mode"
+        ]
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": true,
+      "notes": [],
+      "alt_functions": [
+        {
+          "name": "IR_OUT",
+          "peripheral": "IR",
+          "role": "OUT",
+          "af_code": "AF1",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM4_CH4",
+          "peripheral": "TIM4",
+          "role": "CH4",
+          "af_code": "AF2",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_D2",
+          "peripheral": "SAI1",
+          "role": "D2",
+          "af_code": "AF3",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "I2C1_SDA",
+          "peripheral": "I2C1",
+          "role": "SDA",
+          "af_code": "AF4",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SPI2_NSS",
+          "peripheral": "SPI2",
+          "role": "NSS",
+          "af_code": "AF5",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SDMMC1_CDIR",
+          "peripheral": "SDMMC1",
+          "role": "CDIR",
+          "af_code": "AF8",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "FDCAN1_TX",
+          "peripheral": "FDCAN1",
+          "role": "TX",
+          "af_code": "AF9",
+          "active_by_default_after_reset": true
+        },
+        {
+          "name": "DCMI_D7",
+          "peripheral": "DCMI",
+          "role": "D7",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "PSSI_D7",
+          "peripheral": "PSSI",
+          "role": "D7",
+          "af_code": "AF10",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SDMMC1_D5",
+          "peripheral": "SDMMC1",
+          "role": "D5",
+          "af_code": "AF12",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "SAI1_FS_A",
+          "peripheral": "SAI1",
+          "role": "FS_A",
+          "af_code": "AF13",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "TIM17_CH1",
+          "peripheral": "TIM17",
+          "role": "CH1",
+          "af_code": "AF14",
+          "active_by_default_after_reset": false
+        },
+        {
+          "name": "EVENTOUT",
+          "peripheral": "EXTI",
+          "role": null,
+          "af_code": "AF15",
+          "active_by_default_after_reset": false
+        }
+      ],
+      "additional_functions": [],
+      "evidence": {
+        "page": 117,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "47"
+      ],
+      "name": "VSS",
+      "gpio_base_name": null,
+      "type": "power_in_or_out",
+      "pin_type_raw": "S",
+      "io_structure": {
+        "raw": "-",
+        "base": null,
+        "suffixes": [],
+        "meaning": []
+      },
+      "power_domain": "GND",
+      "is_5v_tolerant": null,
+      "notes": [],
+      "alt_functions": [],
+      "additional_functions": [],
+      "evidence": {
+        "page": 117,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    },
+    {
+      "numbers": [
+        "48"
+      ],
+      "name": "VDD",
+      "gpio_base_name": null,
+      "type": "power_in_or_out",
+      "pin_type_raw": "S",
+      "io_structure": {
+        "raw": "-",
+        "base": null,
+        "suffixes": [],
+        "meaning": []
+      },
+      "power_domain": "VDD",
+      "is_5v_tolerant": null,
+      "notes": [],
+      "alt_functions": [],
+      "additional_functions": [],
+      "evidence": {
+        "page": 117,
+        "section": "Table 27. STM32U545xx pin/ball definitions",
+        "confidence": "high",
+        "method": "table"
+      }
+    }
+  ]
+}
