@@ -432,7 +432,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:PUMH10,115"
+		(symbol "My_Libraries:PUMH10,115"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -4947,7 +4947,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:PUMH10,115")
+		(lib_id "My_Libraries:PUMH10,115")
 		(at 123.19 97.79 270)
 		(unit 2)
 		(exclude_from_sim no)
@@ -5689,7 +5689,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:PUMH10,115")
+		(lib_id "My_Libraries:PUMH10,115")
 		(at 86.36 97.79 270)
 		(unit 1)
 		(exclude_from_sim no)

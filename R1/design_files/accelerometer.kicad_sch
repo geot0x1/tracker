@@ -145,7 +145,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:MC3479"
+		(symbol "My_Libraries:MC3479"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1047,7 +1047,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:MC3479")
+		(lib_id "My_Libraries:MC3479")
 		(at 157.48 81.28 0)
 		(unit 1)
 		(exclude_from_sim no)

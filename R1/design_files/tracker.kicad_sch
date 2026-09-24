@@ -393,7 +393,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:+VSYS"
+		(symbol "My_Libraries:+VSYS"
 			(power)
 			(exclude_from_sim no)
 			(in_bom no)
@@ -503,7 +503,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:DMP2008UFG"
+		(symbol "My_Libraries:DMP2008UFG"
 			(pin_numbers
 				(hide yes)
 			)
@@ -2190,7 +2190,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:DMP2008UFG")
+		(lib_id "My_Libraries:DMP2008UFG")
 		(at 50.8 52.07 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2561,7 +2561,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "My Footprints:pad_smd_1.5x3"
+		(property "Footprint" "My_Footprints:pad_smd_1.5x3"
 			(at 26.67 52.07 0)
 			(effects
 				(font
@@ -2737,7 +2737,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:+VSYS")
+		(lib_id "My_Libraries:+VSYS")
 		(at 142.24 184.15 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2882,7 +2882,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:+VSYS")
+		(lib_id "My_Libraries:+VSYS")
 		(at 102.87 142.24 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3242,7 +3242,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "My Footprints:pad_smd_1.5x3"
+		(property "Footprint" "My_Footprints:pad_smd_1.5x3"
 			(at 26.67 55.88 0)
 			(effects
 				(font
@@ -3542,7 +3542,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:+VSYS")
+		(lib_id "My_Libraries:+VSYS")
 		(at 143.51 88.9 0)
 		(unit 1)
 		(exclude_from_sim no)

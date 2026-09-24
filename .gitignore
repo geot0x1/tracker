@@ -3,6 +3,7 @@
 *.kicad_prl
 *.tmp
 *~
+~*.lck
 _freerouting.log
 
 # Schematic and PCB backup files

@@ -1354,7 +1354,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:+2V8"
+		(symbol "My_Libraries:+2V8"
 			(power)
 			(exclude_from_sim no)
 			(in_bom no)
@@ -1464,7 +1464,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:+VSYS"
+		(symbol "My_Libraries:+VSYS"
 			(power)
 			(exclude_from_sim no)
 			(in_bom no)
@@ -1574,7 +1574,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:AP22800HB-7"
+		(symbol "My_Libraries:AP22800HB-7"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1809,7 +1809,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:BG96"
+		(symbol "My_Libraries:BG96"
 			(pin_numbers
 				(hide yes)
 			)
@@ -1832,7 +1832,7 @@
 					)
 				)
 			)
-			(property "Footprint" "My Footprints:LGA_BG96"
+			(property "Footprint" "My_Footprints:LGA_BG96"
 				(at -45.72 0 0)
 				(effects
 					(font
@@ -3721,7 +3721,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:DF6A6.8FUT"
+		(symbol "My_Libraries:DF6A6.8FUT"
 			(pin_names
 				(hide yes)
 			)
@@ -4120,7 +4120,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:NXB0108PW"
+		(symbol "My_Libraries:NXB0108PW"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -4552,7 +4552,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:PUMH10,115"
+		(symbol "My_Libraries:PUMH10,115"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -7235,7 +7235,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:PUMH10,115")
+		(lib_id "My_Libraries:PUMH10,115")
 		(at 105.41 229.87 0)
 		(unit 2)
 		(exclude_from_sim no)
@@ -7383,7 +7383,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:DF6A6.8FUT")
+		(lib_id "My_Libraries:DF6A6.8FUT")
 		(at 317.5 154.94 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7629,7 +7629,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:+2V8")
+		(lib_id "My_Libraries:+2V8")
 		(at 208.28 106.68 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8147,7 +8147,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:PUMH10,115")
+		(lib_id "My_Libraries:PUMH10,115")
 		(at 106.68 195.58 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9042,7 +9042,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:+2V8")
+		(lib_id "My_Libraries:+2V8")
 		(at 105.41 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9391,7 +9391,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:BG96")
+		(lib_id "My_Libraries:BG96")
 		(at 248.92 124.46 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9415,7 +9415,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My Footprints:LGA_BG96"
+		(property "Footprint" "My_Footprints:LGA_BG96"
 			(at 203.2 124.46 0)
 			(effects
 				(font
@@ -9764,7 +9764,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:AP22800HB-7")
+		(lib_id "My_Libraries:AP22800HB-7")
 		(at 134.62 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9789,7 +9789,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My Footprints:UDFN2116-8_Diodes"
+		(property "Footprint" "My_Footprints:UDFN2116-8_Diodes"
 			(at 133.35 45.72 0)
 			(effects
 				(font
@@ -9859,7 +9859,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:NXB0108PW")
+		(lib_id "My_Libraries:NXB0108PW")
 		(at 95.25 144.78 0)
 		(mirror y)
 		(unit 1)
@@ -10737,7 +10737,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:+VSYS")
+		(lib_id "My_Libraries:+VSYS")
 		(at 106.68 48.26 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10836,7 +10836,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My Footprints:APAE1575R1820ABDC1"
+		(property "Footprint" "My_Footprints:APAE1575R1820ABDC1"
 			(at 311.15 96.52 0)
 			(effects
 				(font

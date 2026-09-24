@@ -1179,7 +1179,7 @@
 			)
 		)
 	)
-	(footprint "My Footprints:pad_smd_1.5x3"
+	(footprint "My_Footprints:pad_smd_1.5x3"
 		(layer "F.Cu")
 		(uuid "167e97d9-a69c-46a4-9716-fd13f5b7f099")
 		(at 170.494054 93.25 90)
@@ -2404,7 +2404,7 @@
 			)
 		)
 	)
-	(footprint "My Footprints:pad_smd_1.5x3"
+	(footprint "My_Footprints:pad_smd_1.5x3"
 		(layer "F.Cu")
 		(uuid "47c7ddef-7577-424c-813a-2db6b11a0e23")
 		(at 168.17 93.24 90)
@@ -3153,7 +3153,7 @@
 			)
 		)
 	)
-	(footprint "My Footprints:UDFN2116-8_Diodes"
+	(footprint "My_Footprints:UDFN2116-8_Diodes"
 		(layer "F.Cu")
 		(uuid "64e2435c-0de3-413e-aea1-153ba915135b")
 		(at 144.155 64.345 -90)
@@ -12034,7 +12034,7 @@
 			)
 		)
 	)
-	(footprint "My Footprints:L_0806_2016Metric_TAIYO_YUDEN_SMD"
+	(footprint "My_Footprints:L_0806_2016Metric_TAIYO_YUDEN_SMD"
 		(layer "B.Cu")
 		(uuid "010bb046-48d7-4641-b035-5b7a9bcc10a0")
 		(at 135.57 90.28 90)
@@ -13188,7 +13188,7 @@
 			)
 		)
 	)
-	(footprint "My Footprints:BQ25622E"
+	(footprint "My_Footprints:BQ25622E"
 		(layer "B.Cu")
 		(uuid "203c0e98-fd0c-409b-8d1b-972d4e0eb47e")
 		(at 148.87 90.445 90)
@@ -13926,7 +13926,7 @@
 			)
 		)
 	)
-	(footprint "My Footprints:LGA_BG96"
+	(footprint "My_Footprints:LGA_BG96"
 		(layer "B.Cu")
 		(uuid "42ef5713-bd54-4514-a289-2deabce4253c")
 		(at 158.787 62.602 180)
@@ -18236,7 +18236,7 @@
 			)
 		)
 	)
-	(footprint "My Footprints:Inductor_TYA252012"
+	(footprint "My_Footprints:Inductor_TYA252012"
 		(layer "B.Cu")
 		(uuid "73f61c7a-f692-4b29-9fab-437c9a516d65")
 		(at 150.5126 86.3 90)
@@ -18575,7 +18575,7 @@
 			)
 		)
 	)
-	(footprint "My Footprints:APAE1575R1820ABDC1"
+	(footprint "My_Footprints:APAE1575R1820ABDC1"
 		(layer "B.Cu")
 		(uuid "78fad91f-b0cb-49cd-927c-09488dd060f5")
 		(at 134.49 54.01 180)

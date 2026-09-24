@@ -574,7 +574,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:BQ25622E"
+		(symbol "My_Libraries:BQ25622E"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -594,7 +594,7 @@
 					)
 				)
 			)
-			(property "Footprint" "My Footprints:BQ25622E"
+			(property "Footprint" "My_Footprints:BQ25622E"
 				(at 0 0 0)
 				(effects
 					(font
@@ -970,7 +970,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My Libraries:PUMH10,115"
+		(symbol "My_Libraries:PUMH10,115"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2753,7 +2753,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:BQ25622E")
+		(lib_id "My_Libraries:BQ25622E")
 		(at 147.32 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2777,7 +2777,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My Footprints:BQ25622E"
+		(property "Footprint" "My_Footprints:BQ25622E"
 			(at 147.32 60.96 0)
 			(effects
 				(font
@@ -3942,7 +3942,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:PUMH10,115")
+		(lib_id "My_Libraries:PUMH10,115")
 		(at 95.25 125.73 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4194,7 +4194,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My Footprints:Inductor_TYA252012"
+		(property "Footprint" "My_Footprints:Inductor_TYA252012"
 			(at 184.15 43.18 0)
 			(effects
 				(font
@@ -4521,7 +4521,7 @@
 		)
 	)
 	(symbol
-		(lib_id "My Libraries:PUMH10,115")
+		(lib_id "My_Libraries:PUMH10,115")
 		(at 95.25 156.21 270)
 		(unit 2)
 		(exclude_from_sim no)
