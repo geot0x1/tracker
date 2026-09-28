@@ -51,3 +51,6 @@ fp-lib-table-bak
 .DS_Store
 Thumbs.db
 *-backups/
+
+# Analysis output
+**/design_files/analysis/

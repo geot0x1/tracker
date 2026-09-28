@@ -51,7 +51,7 @@
         "silk_text_upright": false,
         "zones": {
           "border_display_style": 2,
-          "border_hatch_pitch": 0.5,
+          "border_hatch_pitch": 0.35,
           "corner_radius": 0.0,
           "corner_smoothing": 0,
           "fill_mode": 0,
@@ -60,10 +60,10 @@
           "hatch_smoothing_level": 0,
           "hatch_smoothing_value": 0.1,
           "hatch_thickness": 1.0,
-          "min_clearance": 0.2,
+          "min_clearance": 0.3,
           "min_island_area": 10.0,
-          "min_thickness": 0.25,
-          "pad_connection": 1,
+          "min_thickness": 0.2,
+          "pad_connection": 2,
           "remove_islands": 0,
           "thermal_relief_gap": 0.5,
           "thermal_relief_spoke_width": 0.5
@@ -76,12 +76,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        [
-          "silk_overlap|162090000|72200000|b177388b-c633-4623-afaa-56672a79690d|ede8b605-4bc3-4192-982f-7ecc8cd7b617",
-          ""
-        ]
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
@@ -393,6 +388,14 @@
     "erc_exclusions": [
       [
         "pin_to_pin|1422400|838200|3aedd62f-d2d0-478b-9e46-5b96644e67b3|423a8582-0e24-4ac1-889e-e47f29c87d5e|/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/68d45962-0216-4a92-bb54-eaef1d80ce8b|/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/68d45962-0216-4a92-bb54-eaef1d80ce8b|/4f1d18f5-7d2b-4d0b-8633-b1619d53124c",
+        ""
+      ],
+      [
+        "pin_to_pin|1422400|838200|3aedd62f-d2d0-478b-9e46-5b96644e67b3|b76c18ee-3aff-4bc3-8572-eea0d6344752|/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/68d45962-0216-4a92-bb54-eaef1d80ce8b|/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/68d45962-0216-4a92-bb54-eaef1d80ce8b|/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/1b416177-91af-4d12-8e72-813a2e7f8715",
+        ""
+      ],
+      [
+        "pin_to_pin|1447800|533400|895eff60-b15c-4ddd-9fab-f5f33dc94345|ae94b940-6275-4775-b873-5576b547963c|/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/0c625b57-2ba8-40e9-b547-0ed0363dd1ec|/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/0c625b57-2ba8-40e9-b547-0ed0363dd1ec|/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/0c625b57-2ba8-40e9-b547-0ed0363dd1ec",
         ""
       ]
     ],
@@ -845,7 +848,7 @@
         "uuid": "4f1d18f5-7d2b-4d0b-8633-b1619d53124c"
       }
     ],
-    "used_designators": "R23,#PWR90-91",
+    "used_designators": "#FLG1-2,R23,#PWR5-6,#PWR9-10,#PWR90-92,Y3",
     "variants": []
   },
   "sheets": [

@@ -3192,10 +3192,6 @@
 		(uuid "0379dafe-8f43-4561-8686-e980f4d85af7")
 	)
 	(no_connect
-		(at 50.8 149.86)
-		(uuid "066917bf-b57d-43e6-b0d0-f80ec24fd2b8")
-	)
-	(no_connect
 		(at 137.16 90.17)
 		(uuid "43d5e20a-40a8-40b5-bc31-a3aab29801a0")
 	)
@@ -3208,16 +3204,8 @@
 		(uuid "52424310-746e-414d-a398-66d5599bbde1")
 	)
 	(no_connect
-		(at 45.72 177.8)
-		(uuid "bcb75703-fb72-42e3-98bf-794e36d337ce")
-	)
-	(no_connect
-		(at 50.8 177.8)
-		(uuid "d8508a68-5824-4ae4-989b-b2e7a31627f3")
-	)
-	(no_connect
 		(at 45.72 149.86)
-		(uuid "eddcd571-0fc7-4c6d-add2-4232a2d4bb96")
+		(uuid "986d089c-ae0e-46d9-8f56-2276d4b623ed")
 	)
 	(wire
 		(pts
@@ -4258,6 +4246,16 @@
 			(type default)
 		)
 		(uuid "f6ab7071-6bd9-45f4-9742-154204ad00da")
+	)
+	(wire
+		(pts
+			(xy 33.02 177.8) (xy 45.72 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8b558e2-42c7-4542-887f-1b22132f1804")
 	)
 	(wire
 		(pts
@@ -5333,91 +5331,6 @@
 			(project "tracker"
 				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/5edf3f23-50ab-4fd8-9879-f628dc9bcaf7"
 					(reference "C8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Crystal_GND24_Small")
-		(at 48.26 177.8 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "2a64ccb9-8cd4-4428-b1fc-fdef7f7965a1")
-		(property "Reference" "Y2"
-			(at 56.642 176.53 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "8MHz"
-			(at 57.912 178.562 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Crystal:Crystal_SMD_0603-4Pin_6.0x3.5mm"
-			(at 48.26 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 48.26 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Four pin crystal, GND on pins 2 and 4, small symbol"
-			(at 48.26 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "dd88d646-93c0-402c-9cfc-e1f97a838832")
-		)
-		(pin "4"
-			(uuid "82366e07-2db1-4292-970a-3a38c87afc20")
-		)
-		(pin "2"
-			(uuid "916f29a6-5836-463c-8c96-116c7a263a14")
-		)
-		(pin "3"
-			(uuid "59176f99-af88-4da7-8367-b1f06fce8690")
-		)
-		(instances
-			(project "tracker"
-				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/5edf3f23-50ab-4fd8-9879-f628dc9bcaf7"
-					(reference "Y2")
 					(unit 1)
 				)
 			)
@@ -6831,6 +6744,127 @@
 			(project "tracker"
 				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/5edf3f23-50ab-4fd8-9879-f628dc9bcaf7"
 					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Crystal_GND24_Small")
+		(at 48.26 177.8 270)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8603485e-c416-4813-8acb-7c21bc3c8f5f")
+		(property "Reference" "Y3"
+			(at 50.8 176.5299 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "8MHz"
+			(at 50.8 179.0699 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Crystal:Crystal_SMD_SeikoEpson_FA238-4Pin_3.2x2.5mm"
+			(at 48.26 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 48.26 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Y32258MFBCX"
+			(at 48.26 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property private "KLC_S3.3" "The rectangle is not a symbol body but a graphical element"
+			(at 38.1 177.8 0)
+			(hide yes)
+			(show_name yes)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property private "KLC_S4.1" "Some pins are on 50mil grid to make the symbol small"
+			(at 35.56 177.8 0)
+			(hide yes)
+			(show_name yes)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JLCPCB" "C49158086"
+			(at 48.26 177.8 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "3e7a84d9-381b-4e83-b1bc-6604f1b2f7e2")
+		)
+		(pin "3"
+			(uuid "be87af16-a9b1-423f-9794-b4613282f56a")
+		)
+		(pin "1"
+			(uuid "143133ab-8a5d-4e4d-a1b2-15f7a71f16c6")
+		)
+		(pin "2"
+			(uuid "cb867bb6-d8eb-45d0-bed6-fe8dcc1659b6")
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c/5edf3f23-50ab-4fd8-9879-f628dc9bcaf7"
+					(reference "Y3")
 					(unit 1)
 				)
 			)
