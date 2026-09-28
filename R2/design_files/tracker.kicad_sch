@@ -441,7 +441,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My_Libraries:DMP2008UFG"
+		(symbol "My_Libraries:FH13P04G6"
 			(pin_numbers
 				(hide yes)
 			)
@@ -463,7 +463,7 @@
 					)
 				)
 			)
-			(property "Value" "DMP2008UFG"
+			(property "Value" "FH13P04G6"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -484,7 +484,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://www.diodes.com/datasheet/download/DMP2008UFG.pdf"
+			(property "Datasheet" "https://www.xfhong.com"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -495,7 +495,7 @@
 					)
 				)
 			)
-			(property "Description" "20V P-CHANNEL ENHANCEMENT MODE MOSFET POWERDI"
+			(property "Description" "-40V P-Channel Enhancement Mode MOSFET PDFN3.3x3.3-8L"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -506,7 +506,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "Mosfet P-channel 20V "
+			(property "ki_keywords" "Mosfet P-channel 40V "
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -517,7 +517,7 @@
 					)
 				)
 			)
-			(symbol "DMP2008UFG_0_1"
+			(symbol "FH13P04G6_0_1"
 				(polyline
 					(pts
 						(xy -2.286 1.905) (xy -2.286 -1.905)
@@ -684,7 +684,7 @@
 					)
 				)
 			)
-			(symbol "DMP2008UFG_1_1"
+			(symbol "FH13P04G6_1_1"
 				(pin passive line
 					(at 0 -5.08 90)
 					(length 2.54)
@@ -1975,95 +1975,6 @@
 		)
 	)
 	(symbol
-		(lib_id "My_Libraries:DMP2008UFG")
-		(at 50.8 52.07 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1ccc3474-8202-4a59-98e6-a8283b30d6dc")
-		(property "Reference" "Q1"
-			(at 50.8 45.72 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "DMP2008UFG"
-			(at 50.8 48.26 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SON:Diodes_PowerDI3333-8"
-			(at 50.8 52.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.diodes.com/datasheet/download/DMP2008UFG.pdf"
-			(at 50.8 52.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "20V P-CHANNEL ENHANCEMENT MODE MOSFET POWERDI"
-			(at 50.8 52.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "9a388157-be26-4983-9dc4-1669aa4967d7")
-		)
-		(pin "2"
-			(uuid "aa769460-76fd-47ef-868d-5266e64f57ec")
-		)
-		(pin "3"
-			(uuid "58f90161-4d36-4a5a-ba6c-fdee78e4a091")
-		)
-		(pin "4"
-			(uuid "669531d3-533c-4cdb-acd0-09ebb71ed102")
-		)
-		(pin "5"
-			(uuid "91830e14-e920-48f9-a831-39c9347e9840")
-		)
-		(instances
-			(project "tracker"
-				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c"
-					(reference "Q1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R_Small")
 		(at 85.09 69.85 0)
 		(unit 1)
@@ -2217,6 +2128,106 @@
 			(project "tracker"
 				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c"
 					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "My_Libraries:FH13P04G6")
+		(at 50.8 52.07 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "39f80dc5-2d23-4a04-bf8e-652e4c0b9746")
+		(property "Reference" "Q1"
+			(at 50.8 45.72 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "FH13P04G6"
+			(at 50.8 48.26 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SON:Diodes_PowerDI3333-8"
+			(at 50.8 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.xfhong.com"
+			(at 50.8 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "-40V P-Channel Enhancement Mode MOSFET PDFN3.3x3.3-8L"
+			(at 50.8 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JLCPCB" "C19273264"
+			(at 50.8 52.07 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "062d8eb8-805b-40c4-9ed3-31a2f8f58d95")
+		)
+		(pin "3"
+			(uuid "b9b44894-2088-4e05-bd3b-46572f07acc3")
+		)
+		(pin "4"
+			(uuid "005ba49b-3084-4545-8716-6ee79ac17551")
+		)
+		(pin "5"
+			(uuid "71d08edd-706b-44d5-bf7d-8c790d937b9b")
+		)
+		(pin "1"
+			(uuid "020525f9-56ba-4a3d-9fd0-48a8af8199d8")
+		)
+		(instances
+			(project "tracker"
+				(path "/4f1d18f5-7d2b-4d0b-8633-b1619d53124c"
+					(reference "Q1")
 					(unit 1)
 				)
 			)
@@ -2529,6 +2540,17 @@
 			)
 		)
 		(property "PartNo" "PDZ12B,115"
+			(at 71.12 57.15 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JLCPCB" "C194495"
 			(at 71.12 57.15 90)
 			(hide yes)
 			(show_name no)
